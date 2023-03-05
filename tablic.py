@@ -1,15 +1,15 @@
-# napravi špil karata i izmešaj ga
-# prikaži špil pre i posle mešanja
+# napravi spil karata i izmesaj ga
+# prikazi spil pre i posle mesanja
 
 from random import randrange
 
-def napravišpil():
-    špil=[]
+def napravispil():
+    spil=[]
     for znak in ("s","h","d","c"):
         for vrednost in ("2","3","4","5","6","7","8","9","T","J","D","K","A"):
-            špil.append(vrednost + znak)
-    return(špil)
-def mešaj(karte) :
+            spil.append(vrednost + znak)
+    return(spil)
+def mesaj(karte) :
     cards=karte
     
     for i in range(0,len(cards)) :
@@ -18,53 +18,39 @@ def mešaj(karte) :
         cards[i], cards[indexzamene] =cards[indexzamene], cards[i]
     return cards
 
-def deli(karte,brigrača):
-    igrač = [["","","","","",""] for x in range(0,brigrača)]
-
+def deli(karte,brigraca):
+    igrac = [["","","","","",""] for x in range(0,brigraca)]
 # pravljeno za tablic tako da se dele po 3 karte za redom svakom igracu, br igraca moze biti 2 ili 4
     prva = 0
     poslednja = 3
-
     for deljenje in range(2):
-        for i in range(0,brigrača):
+        for i in range(0,brigraca):
             for k in range(prva,poslednja):
-                igrač[i][k] = karte.pop(0)
+                igrac[i][k] = karte.pop(0)
                 #
         prva = 3
         poslednja = 6           
-    return igrač
+    return igrac
 
-def testfor():
-    s="Udri me do zore!"
-    list=["Bo","že","mi","li","ču","da","ve","li","ko","ga"]
-    newlist=[]
-    print(len(s))
-#    for i in range(0,len(s)):
-#       s[i]=
-#        print("s[",i,"]=",s[i])
-
-    print("a sad lista, 1. način for j in list...")
-    for j in list:
-        print(j)
-       
-#    print(list)
-    print("2. način, for j in range(0,len(list))...")
-    for j in range(0,len(list)):
-        for i in range(j, len(s)):
-            newlist.append(list[j]+s[i])
-#            print(newlist[j])
-    print("\nlista=", newlist)
-
+def izbaciTalon(karte):
+    talon = []
+    for i in range(4):
+        talon.append(karte.pop(len(karte)-1))
+    return talon
+        
 def main() :
-    deck=napravišpil()
+    deck=napravispil()
     print(deck)
-    izmešan=mešaj(deck)
-    print(izmešan)
-    print("broj karata je: ", len(izmešan))
-    ruka=deli(izmešan,2)
+    izmesan=mesaj(deck)
+    print(izmesan)
+    print("broj karata je: ", len(izmesan))
+    ruka=deli(izmesan,2)
     print(ruka)
-    print("preostale karte\n", izmešan)
-    print("broj preostalih karata je: ", len(izmešan))
+    print("preostale karte\n", izmesan)
+    print("broj preostalih karata je: ", len(izmesan))
+    print("Na talonu su: \t", izbaciTalon(izmesan))
+    print("preostale karte\n", izmesan)
+    print("broj preostalih karata je: ", len(izmesan))
 main()
 
 
