@@ -37,7 +37,15 @@ def izbaciTalon(karte):
     for i in range(4):
         talon.append(karte.pop(len(karte)-1))
     return talon
-        
+
+def baciKartu(talon):
+    print("Talon: ", talon)
+    karta = input("Izaberite kartu kojom igrate: ")
+    for x in range(len(talon)):
+        for y in range(1,len(talon)):
+            pass # ovde treba ona f-ja za pronalazenje combinacija imas u bookmarks
+
+
 def main() :
     deck=napravispil()
     print(deck)
@@ -48,9 +56,12 @@ def main() :
     print(ruka)
     print("preostale karte\n", izmesan)
     print("broj preostalih karata je: ", len(izmesan))
-    print("Na talonu su: \t", izbaciTalon(izmesan))
+    talon = izbaciTalon(izmesan)
+    print("Na talonu su: \t", talon )
     print("preostale karte\n", izmesan)
     print("broj preostalih karata je: ", len(izmesan))
-main()
+
+if __name__ == "__main__" :
+    main()
 
 
