@@ -2,6 +2,7 @@
 # prikazi spil pre i posle mesanja
 
 from random import randrange
+from karta import *
 
 def napravispil():
     spil=[]
@@ -15,7 +16,7 @@ def mesaj(karte) :
     for i in range(0,len(cards)) :
         indexzamene=randrange(i,len(cards))
     #    zamena=cards[indexzamene]
-        cards[i], cards[indexzamene] =cards[indexzamene], cards[i]
+        cards[i], cards[indexzamene] = cards[indexzamene], cards[i]
     return cards
 
 def deli(karte,brigraca):
@@ -30,7 +31,10 @@ def deli(karte,brigraca):
                 #
         prva = 3
         poslednja = 6           
-    return igrac
+    # player1 = Player(1,igrac[0])
+    # player2 = Player(2,igrac[1])
+    # players = [player1,player2]
+    return igrac # players
 
 def izbaciTalon(karte):
     talon = []
@@ -38,12 +42,12 @@ def izbaciTalon(karte):
         talon.append(karte.pop(len(karte)-1))
     return talon
 
-def baciKartu(talon):
-    print("Talon: ", talon)
-    karta = input("Izaberite kartu kojom igrate: ")
-    for x in range(len(talon)):
-        for y in range(1,len(talon)):
-            pass # ovde treba ona f-ja za pronalazenje combinacija imas u bookmarks
+# def baciKartu(talon):
+#     print("Talon: ", talon)
+#     karta = input("Izaberite kartu kojom igrate: ")
+#     for x in range(len(talon)):
+#         for y in range(1,len(talon)):
+#             pass # ovde treba ona f-ja za pronalazenje combinacija imas u bookmarks
 
 
 def main() :
