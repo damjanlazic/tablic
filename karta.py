@@ -24,13 +24,16 @@ class Card:
                 case 'A':
                     self.value = 1
             self.points = 1
-
+    def printCard(self):
+        print(self.name, "\t", self.value, "\t", self.points )
    
 class Player:
-    def __init__(self,name,hand,points: int) -> None:
+    def __init__(self,name,hand) -> None:
         self.name = name
-        self.hand = hand
-        self.points = points
+        self.hand = hand # cards currently in hand
+        self.points = 0 # points won by the player during the game, table + shtihovi (T-K+2c) are updated during the game 
+        self.taken = 0 # total number of cards won/taken by the player in the end compares with player no2 and +3 points added to the one with larger number of cards taken 
+        
 
     def play(self,talonValues):
         c = " "
