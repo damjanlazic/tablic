@@ -16,40 +16,61 @@ def shuffleDeck(deckOfCards) :
         indexzamene = randrange(i,len(deck1))
         deck1[i], deck1[indexzamene] = deck1[indexzamene], deck1[i]
     return deck1
+
 def dealCards(deckOfCards,players):
-#    igrac = [["","","","","",""] for x in range(0,brigraca)]
-# pravljeno za tablic tako da se dele po 3 karte za redom svakom igracu, br igraca moze biti 2 ili 4
-    prva = 0
-    poslednja = 3
+    firstCard = 0
+    lastCard = 3
     for deljenje in range(2):
         for i in range(0,2):
-            for k in range(prva,poslednja):
+            for k in range(firstCard,lastCard):
                 players[i].hand[k] = deckOfCards.pop(0)
                 #
-        prva = 3
-        poslednja = 6           
+        firstCard = 3
+        lastCard = 6           
     return players
+
+def dealTalon(deckOfCards):
+    talon = []
+    for i in range(4):
+        talon.append(deckOfCards.pop(len(deckOfCards)-1))
+    return talon
+
+
 def main():
-    print("Original deck: ")
+    # print("Original deck: ")
     d = makeDeck()
-    for i in d:
-        i.printCard()
-    print("Shuffled deck: ")    
+    # for i in d:
+    #     i.printCard()
+    # print("Shuffled deck: ")    
     dshuffled = shuffleDeck(d)
-    for i in dshuffled:
-        i.printCard()
+    # for i in dshuffled:
+    #     i.printCard()
 
     players = [Player(n) for n in range(2)]
     dealCards(dshuffled,players)
     for p in players:
         p.printHand()
 
-    print("Remaining cards: ")
-    for i in dshuffled:
-        i.printCard()    
+    # print("Remaining cards: ")
+    # for i in dshuffled:
+    #     i.printCard()    
 
+    talon = dealTalon(dshuffled)
+    print("Cards on the table (talon): ")
+    for i in talon:
+        i.printCard()
+    
+    # print("Remaining cards: ")
+    # for i in dshuffled:
+    #     i.printCard()
 
-
+    players[0].play(talon)
+    players[0].printHand()
+    players[0].printStatus()
+    
+    print("Cards on the table (talon): ")    
+    for i in talon:
+        i.printCard()
 # zasto mi ovaj poslednji print stampa izmesani deck ako ne koristim deck1 = deckOfCards.copy()?? trebalo bi da je d - prvobitni spil, a dshuffled - izmesani spil nije mi jasno ovo uopste...
     # print("Original deck again: ")    
     # for i in d:
