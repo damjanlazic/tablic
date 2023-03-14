@@ -20,6 +20,9 @@ def shuffleDeck(deckOfCards) :
 def dealCards(deckOfCards,players):
     firstCard = 0
     lastCard = 3
+    for p in players:
+        p.hand = [Card("Ah") for i in range(6)] # need to initialise hand to have 6 cards, they will be changed below...
+
     for deljenje in range(2):
         for i in range(0,2):
             for k in range(firstCard,lastCard):
@@ -46,31 +49,33 @@ def main():
     # for i in dshuffled:
     #     i.printCard()
 
-    players = [Player(n) for n in range(2)]
-    dealCards(dshuffled,players)
-    for p in players:
-        p.printHand()
-
-    # print("Remaining cards: ")
-    # for i in dshuffled:
-    #     i.printCard()    
-
+    players = [Player(n) for n in ("Damjan","Najmad")]
+    
     talon = dealTalon(dshuffled)
-    print("Cards on the table (talon): ")
-    for i in talon:
-        i.printCard()
-    
-    # print("Remaining cards: ")
-    # for i in dshuffled:
-    #     i.printCard()
+    # print("Cards on the table (talon): ")
 
-    players[0].play(talon)
-    players[0].printHand()
-    players[0].printStatus()
-    
-    print("Cards on the table (talon): ")    
-    for i in talon:
-        i.printCard()
+    for i in range(4):    
+        dealCards(dshuffled,players)
+        for turn in range(6):
+            for p in players:
+                print("Cards on the table (talon): ")
+                for i in talon:
+                    i.printCard()
+                p.printHand()
+                p.play(talon)
+                p.printStatus()
+
+            # players[0].play(talon)
+            # players[0].printHand()
+            # players[0].printStatus()
+            
+            # print("Cards on the table (talon): ")    
+            # for i in talon:
+            #     i.printCard()
+
+        # print("Remaining cards: ")
+        # for i in dshuffled:
+        #     i.printCard()    
 # zasto mi ovaj poslednji print stampa izmesani deck ako ne koristim deck1 = deckOfCards.copy()?? trebalo bi da je d - prvobitni spil, a dshuffled - izmesani spil nije mi jasno ovo uopste...
     # print("Original deck again: ")    
     # for i in d:

@@ -46,13 +46,19 @@ class Player:
         if not hasattr(other, 'name'):
            return False
         return self.name == other.name
-        
+
+# try to make a function which will compare cards value only: 
+    # def __eqVal__(self, other):
+    #     if not hasattr(other, 'value'):
+    #        return False
+    #     return self.value == other.value
+            
     def printHand(self):
-        print("player no.:", self.name, "\ncards in hand:")
+        print("player: ", self.name, "\ncards in hand:")
         for i in self.hand:
             i.printCard()
     def printStatus(self):
-        print("player no.:", self.name, "\ncards taken: ",self.taken,"\npoints: ",self.points)
+        print("player: ", self.name, "\ncards taken: ",self.taken,"\npoints: ",self.points,"\n")
 
     def play(self,talon):
         cardName = " "
@@ -109,6 +115,19 @@ class Player:
                         cardCombinations[i].append(c)
                         # cini mi se da problem nastaje ako na talonu postoji vise karata iste vrednosti a razlicitog znaka koje ulaze u kombinacije
                         # ovo moze da se resi mozda nekim try except blokom ili if... videti kasnije
+
+# bezuspesan pokusaj da se resi problem duplikata
+        # seen = []
+        # match = False
+        # for cardSubset in cardCombinations:
+        #     for seenSubset in seen:
+        #         for seenCard in seenSubset:
+        #             for originalCard in cardSubset:
+        #                 if seenCard.value__eqVal__(originalCard.value):
+        #                     match = True
+        #                 else:
+        #                     match = False                     
+        #     seen.append(cardSubset)
         takenAcard = False
         for cardSubset in cardCombinations:
             for cd in cardSubset:
