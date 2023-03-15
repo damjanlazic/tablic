@@ -87,8 +87,10 @@ class Player:
             for i in range(len(talonValues)+1):
                 for subset in combinations(talonValues,i):
                     if sum(subset) == card.value:
-                        print(list(subset))
-                        cardValueCombinations.append(subset)
+                            print("nasao subset: ",list(subset))
+                            if subset not in cardValueCombinations: 
+                                cardValueCombinations.append(subset)
+                                print("ubacio subset: ",list(subset))
         # ako ima kec, odraditi ovo dva puta, jednom za value=1 a drugi put za value = 11 pa spojiti rezultate
         # problem je sto se na pocetnom talonu moze naci od 1 do 4 keca tako da ovaj problem treba resiti
             if 1 in talonValues:
@@ -100,8 +102,10 @@ class Player:
                 for i in range(len(talonValues)+1):
                     for subset in combinations(talonValues,i):
                         if sum(subset) == card.value:
-                            print(list(subset))
-                            cardValueCombinations.append(subset)        
+                            print("nasao subset: ",list(subset))
+                            if subset not in cardValueCombinations: 
+                                cardValueCombinations.append(subset)
+                                print("ubacio subset: ",list(subset))        
             doAgain = False
             if card.value == 1 :
                 card.value = 11
@@ -112,7 +116,9 @@ class Player:
             for sub in cardValueCombinations:
                 for val in sub:
                     if c.value == val:
+                        # if c.value not in cardCombinations[i]
                         cardCombinations[i].append(c)
+                        print("cardCombinations: ", cardCombinations[i])
                         # cini mi se da problem nastaje ako na talonu postoji vise karata iste vrednosti a razlicitog znaka koje ulaze u kombinacije
                         # ovo moze da se resi mozda nekim try except blokom ili if... videti kasnije
 
