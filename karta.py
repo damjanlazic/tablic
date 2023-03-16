@@ -1,4 +1,5 @@
 from itertools import combinations
+from copy import deepcopy
 
 
 
@@ -47,11 +48,6 @@ class Player:
            return False
         return self.name == other.name
 
-# try to make a function which will compare cards value only: 
-    # def __eqVal__(self, other):
-    #     if not hasattr(other, 'value'):
-    #        return False
-    #     return self.value == other.value
             
     def printHand(self):
         print("player: ", self.name, "\ncards in hand:")
@@ -112,28 +108,31 @@ class Player:
                 doAgain = True
         i = 0
         cardCombinations = [list() for x in cardValueCombinations]
-        for c in talon:
-            for sub in cardValueCombinations:
-                for val in sub:
+       
+        for sub in cardValueCombinations:
+            for val in sub:
+                for c in talon:
                     if c.value == val:
-                        # if c.value not in cardCombinations[i]
-                        cardCombinations[i].append(c)
-                        print("cardCombinations: ", cardCombinations[i])
-                        # cini mi se da problem nastaje ako na talonu postoji vise karata iste vrednosti a razlicitog znaka koje ulaze u kombinacije
-                        # ovo moze da se resi mozda nekim try except blokom ili if... videti kasnije
+                        doubles = False
+                        for combinationIndex in range(len(cardCombinations)):
+                            for ccardIndex in range(len(cardCombinations[combinationIndex])):
+                                if c.value == cardCombinations[combinationIndex][ccardIndex].value:
+                                    if c.points > cardCombinations[combinationIndex][ccardIndex].points:
+                                        cardCombinations[combinationIndex][ccardIndex] = c        
+                                        print("ccard=")
+                                        cardCombinations[combinationIndex][ccardIndex].printCard()                        
+                                    doubles = True
+                            if not doubles: 
+                                cardCombinations[combinationIndex].append(c)
+                                print("combination.append(c)")
+                                c.printCard()
+        for combo in cardCombinations:
+            print("combo:")
+            for c1 in combo:
+                print("c1:")
+                c1.printCard()
+            print("..........")
 
-# bezuspesan pokusaj da se resi problem duplikata
-        # seen = []
-        # match = False
-        # for cardSubset in cardCombinations:
-        #     for seenSubset in seen:
-        #         for seenCard in seenSubset:
-        #             for originalCard in cardSubset:
-        #                 if seenCard.value__eqVal__(originalCard.value):
-        #                     match = True
-        #                 else:
-        #                     match = False                     
-        #     seen.append(cardSubset)
         takenAcard = False
         for cardSubset in cardCombinations:
             for cd in cardSubset:
@@ -147,7 +146,7 @@ class Player:
                 except:
                 #    print("naletosmo na duplikat")
                     pass
-            print("\n")
+        print("\n")
         if takenAcard:
             self.points += card.points
             self.taken += 1
