@@ -151,7 +151,7 @@ class mockPlayer:
             for value in combination:
                 index = 0
                 for card in talonCopy:
-                    if value == card.value and candidate.points < card.points:
+                    if value == card.value and candidate.points <= card.points:
                         candidate.copyCard(card)
                         candidateIndex = index
                     index += 1
