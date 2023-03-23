@@ -201,6 +201,8 @@ class mockPlayer:
                     pointsList.append(pointsGain)
                     listOfbestCombinationsLists.append(bestCombinationsList)
                 cardCombinations.remove(cardSubset)
+                pointsGain = 0
+                cardsTaken = 0
 
 
                 # for cardInList in bestCombinationsList:
@@ -214,7 +216,13 @@ class mockPlayer:
             print(points)
             for card in bestCombinationsDict[points]:
                 card.printCard()
-            print("...................")
+            print(".................../.................")
+        
+# best pick:(highest number of points)        
+        for card in bestCombinationsDict[sorted(bestCombinationsDict)[len(bestCombinationsDict)-1]]:
+            card.printCard()
+        print("...................")        
+#        print(sorted(bestCombinationsDict)[len(bestCombinationsDict)-1])
 
         # print("\n")
         # if takenAcard:
