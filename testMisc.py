@@ -170,6 +170,12 @@ class mockPlayer:
         # for c in calculateBestTake(cardCombinations,len(talon)):
         #     c.printCard()        
         print("---------------")
+
+# create a separate method which will try to combine combinations to get the max points gain,
+# then you can compare with below best combinations and decide which to use
+# now the problem is that it takes only one combination, and it could take more than one:
+# eg 7+6 =13 and 1 +2 =13 it should take both
+
         pointsGain = 0
         cardsTaken = 0
         listOfbestCombinationsLists = []
@@ -208,7 +214,11 @@ class mockPlayer:
                 # for cardInList in bestCombinationsList:
                 #     bestCombinationsDict[pointsGain].append(cardInList)
 #                bestCombinationsDict.update({pointsGain : bestCombinationsList}) 
-
+        print("...................///.................")
+        for a in listOfbestCombinationsLists:
+            for c in a:
+                c.printCard()
+            print("...")
         bestCombinationsDict = dict(zip(pointsList,listOfbestCombinationsLists))
 
 
