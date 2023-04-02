@@ -32,10 +32,44 @@ class Card:
                 case 'A':
                     self.value = 1
                     self.points = 1
+
+    def copyCard(self, card):
+        self.name = card.name
+        self.value = card.value
+        self.points = card.points
+
             
     def printCard(self):
         print(self.name, "\t", self.value, "\t", self.points )
-   
+
+class CardSubset:
+    def __init__(self, cards) -> None:
+        self.cards = [card for card in cards]
+        self.names = [card.name for card in cards]
+        self.values = [card.value for card in cards]
+        self.points = [card.points for card in cards]
+        self.totalPoints = sum(self.points)
+    def printSubset(self):
+        for n in self.names:
+            print(n,end = "\t")
+        print()
+        for v in self.values:
+            print(v,end = "\t")
+        print()
+        for p in self.points:
+            print(p,end = "\t")
+        print()
+        print("total points: ",self.totalPoints)
+    def __eq__(self, other):
+        if not hasattr(other, 'totalPoints'):
+            return False
+        if len(self.names) != len(other.names):
+             return False
+        for index in range(0,len(self.names)):
+                if self.names[index] != other.names[index]:
+                     return False
+        return True
+
 class Player:
     def __init__(self,name) -> None:
         self.name = name
@@ -55,6 +89,15 @@ class Player:
             i.printCard()
     def printStatus(self):
         print("player: ", self.name, "\ncards taken: ",self.taken,"\npoints: ",self.points,"\n")
+
+    # def findInTalon(valueCombination, talon):
+    #     talonCopy = deepcopy(talon)
+    #     cards = {} # idea is to have a dictionary where keys are cardValues and values are lists of cards on talon with those values
+    #     for value in valueCombination:
+    #         for card in talonCopy:
+    #             if value == card.value:
+    #                 cards[value].append(card)
+        
 
     def play(self,talon):
         cardName = " "
@@ -136,7 +179,7 @@ class Player:
         takenAcard = False
         for cardSubset in cardCombinations:
             for cd in cardSubset:
-                # cd.printCard()
+                cd.printCard()
                 takenAcard = True
                 try:
                     talon.remove(cd)
