@@ -1,10 +1,21 @@
 from karta import *
 
-# def contains(list, filter):
-#     for x in list:
-#         if filter(x):
-#             return True
-#     return False
+def contains(cardName, listOfCards):
+    for card in listOfCards:
+        if cardName == card.name:
+            return True
+    return False
+def hasDuplicate(listOfLists,subList):
+    count = 0
+    subset2 = CardSubset(subList)
+    for alist in listOfLists:
+        subset1 = CardSubset(alist)
+        if subset1.__eq__(subset2):
+            count += 1
+    if count > 1:
+        return True
+    else:
+        return False
 
 # cardCombinations = [[10,4],[10,4],[8,6]]
 # cardCombinations = ((10,4),(10,4))
@@ -145,17 +156,37 @@ class mockPlayer:
         
         candidate = Card("0")
         candidateIndex = 0
+        spare = Card("0")
+        spareIndex = 0
         cardCombinationsIndex = 0
         for combination in cardValueCombinations:
-            talonCopy = [card for card in talon]
+            talonCopy = [Card(card.name) for card in talon]
             for value in combination:
                 index = 0
                 for card in talonCopy:
-                    if value == card.value and candidate.points <= card.points:
-                        candidate.copyCard(card)
-                        candidateIndex = index
+                    # if value == card.value and candidate.points <= card.points:
+                    if value == card.value:
+                        if candidate.points <= card.points:
+                            candidate.copyCard(card)
+                            candidateIndex = index
+                        else: 
+                            spare.copyCard(card)
+                            spareIndex = index     
+                            print("spare =",spareIndex,"\n",spare.printCard(),"------")                   
                     index += 1
+
+                
                 cardCombinations[cardCombinationsIndex].append(talonCopy[candidateIndex])
+                # newSubset = CardSubset(cardCombinations[cardCombinationsIndex]) use in hasDuplicate()
+# ovde izgleda imam beskrajnu petlju jednom kad dobije ovaj hasDuplicate==true, vise ne izlazi iz njega
+                if hasDuplicate(cardCombinations,cardCombinations[cardCombinationsIndex]):
+                    i = 0
+                    for card in cardCombinations[cardCombinationsIndex]:
+                        if card.name == talonCopy[candidateIndex].name:
+                            cardCombinations[cardCombinationsIndex][i] = Card(talonCopy[spareIndex].name)
+                    #    cardCombinations[cardCombinationsIndex] = [Card(talonCopy[spareIndex].name) if card.name == talon[candidateIndex].name else card for card in cardCombinations[cardCombinationsIndex] ]
+                            candidateIndex = spareIndex
+                        i += 1
                 talonCopy.pop(candidateIndex)
                 candidate = Card("0")
             cardCombinationsIndex += 1
@@ -196,6 +227,7 @@ class mockPlayer:
                         #    print("evo me unutra!")
                         except:
                             print("evo nas u except bloku...")
+                            # ovde valjda treba da ponistim kombinaciju... ne, izgleda da to radim dole u else
                     else:
                         print("neku od ovih karata smo vec skinuli...", cd.printCard())
                         pointsGain = 0
