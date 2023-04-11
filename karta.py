@@ -69,6 +69,51 @@ class CardSubset:
                 if self.names[index] != other.names[index]:
                      return False
         return True
+# napraviti funkcije za dodavanje jednog subseta drugom i prepoznavanje da li je subset deo drugog subseta    
+    def isCardInSubset(self,card): # checks if single card is in a subset (used in addCard() which is used in addSubset())
+        for name in self.names:
+            if name == card.name:
+                return True
+        return False
+    
+    def inSubset(self, other): # checks if other is a subset of the self
+        for cardName in other.names:
+            if cardName not in self.names:
+                return False
+        return True
+    
+    def hasOverlap(self,other): # checks if two subsets overlap and returns a subset with overlapping cards or returns False if no overlap
+        if self.inSubset(other):
+            return other
+        elif other.inSubset(self):
+            return self
+        else:
+            overlap = [] # I could use isCardInSubset() here but it seems pointless
+            for name in other.names:
+                if name in self.names:
+                    overlap.append(Card(name))
+            if overlap == []:
+                return False
+            else:
+                return CardSubset(overlap)
+    def addCard(self,card): # if card is already in subset returns False (no card added), otherwise it adds the card to subset and retruns True
+        if self.isCardInSubset(card):
+            return False # no card added
+        self.cards.append(card)
+        self.names.append(card.name)
+        self.values.append(card.value)
+        self.points.append(card.points)
+        self.totalPoints += card.points
+        return True # card added
+    
+    def addSubset(self,other): # adds the other subset only if there is no overlap (returns True of False whether added or not)
+        if self.hasOverlap(other) == False:
+            for card in other.cards:
+                self.addCard(card)
+            return True
+        return False
+
+
 
 class Player:
     def __init__(self,name) -> None:
