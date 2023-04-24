@@ -1,40 +1,40 @@
 from karta import *
 
-def contains(cardName, listOfCards):
-    for card in listOfCards:
-        if cardName == card.name:
-            return True
-    return False
-def hasDuplicate(listOfLists,subList):
-    count = 0
-    subset2 = CardSubset(subList)
-    for alist in listOfLists:
-        subset1 = CardSubset(alist)
-        if subset1.__eq__(subset2):
-            count += 1
-    if count > 1:
-        return True
-    else:
-        return False
+# def contains(cardName, listOfCards):
+#     for card in listOfCards:
+#         if cardName == card.name:
+#             return True
+#     return False
+# def hasDuplicate(listOfLists,subList):
+#     count = 0
+#     subset2 = CardSet(subList)
+#     for alist in listOfLists:
+#         subset1 = CardSet(alist)
+#         if subset1.__eq__(subset2):
+#             count += 1
+#     if count > 1:
+#         return True
+#     else:
+#         return False
 
 # cardCombinations = [[10,4],[10,4],[8,6]]
 # cardCombinations = ((10,4),(10,4))
 # setOfcardCombinations = set(cardCombinations)
 # cardCombinations = ((Card("Ts"),Card("4s")),(Card("Tc"),Card("2s")))
-# for cardSubset in cardCombinations:
-#     print("cardSubset = ",cardSubset)
-#     for card in cardSubset:
+# for cardSet in cardCombinations:
+#     print("cardSet = ",cardSet)
+#     for card in cardSet:
 #         card.printCard()
 # c = Card("As")
-# for cardSubset in cardCombinations:
-#     # print("cardSubset = ",cardSubset)
-#     for card in cardSubset:
+# for cardSet in cardCombinations:
+#     # print("cardSet = ",cardSet)
+#     for card in cardSet:
 #         card = Card("As")
 #         card.printCard()
-#     # print("cardSubset posle= ",cardSubset)
-# for cardSubset in cardCombinations:
-#     print("cardSubset = ",cardSubset)
-#     for card in cardSubset:
+#     # print("cardSet posle= ",cardSet)
+# for cardSet in cardCombinations:
+#     print("cardSet = ",cardSet)
+#     for card in cardSet:
 #         card.printCard()
 # talon = [Card("Js"),Card("Td"),Card("As"),Card("2c"),Card("Ac")]
 
@@ -152,129 +152,160 @@ class mockPlayer:
                 if subset[i] == 11:
                     subset[i] = 1
 
-        cardCombinations = [list() for x in cardValueCombinations]
+        # cardCombinations = [list() for x in cardValueCombinations]
+        cardCombinations = []
         
         candidate = Card("0")
         candidateIndex = 0
+        listOfCandidateIndexes = []
         spare = Card("0")
         spareIndex = 0
         cardCombinationsIndex = 0
         for combination in cardValueCombinations:
-            talonCopy = [Card(card.name) for card in talon]
+            pendingCombination = []
+            talonCopy = CardSet(talon)  # [Card(card.name) for card in talon]
             for value in combination:
                 index = 0
-                for card in talonCopy:
+                for card in talonCopy.cards:
                     # if value == card.value and candidate.points <= card.points:
                     if value == card.value:
                         if candidate.points <= card.points:
                             candidate.copyCard(card)
                             candidateIndex = index
                         else: 
-                            spare.copyCard(card)
+                            spare.copyCard(card) # make a list of spare cards since you need them all
                             spareIndex = index     
-                            print("spare =",spareIndex,"\n",spare.printCard(),"------")                   
+                            # print("spare =",spareIndex)
+                            spare.printCard()                 
                     index += 1
 
-                
-                cardCombinations[cardCombinationsIndex].append(talonCopy[candidateIndex])
-                # newSubset = CardSubset(cardCombinations[cardCombinationsIndex]) use in hasDuplicate()
-# ovde izgleda imam beskrajnu petlju jednom kad dobije ovaj hasDuplicate==true, vise ne izlazi iz njega
-                if hasDuplicate(cardCombinations,cardCombinations[cardCombinationsIndex]):
-                    i = 0
-                    for card in cardCombinations[cardCombinationsIndex]:
-                        if card.name == talonCopy[candidateIndex].name:
-                            cardCombinations[cardCombinationsIndex][i] = Card(talonCopy[spareIndex].name)
-                    #    cardCombinations[cardCombinationsIndex] = [Card(talonCopy[spareIndex].name) if card.name == talon[candidateIndex].name else card for card in cardCombinations[cardCombinationsIndex] ]
-                            candidateIndex = spareIndex
-                        i += 1
-                talonCopy.pop(candidateIndex)
+                pendingCombination.append(candidate)
+                talonCopy.removeCard(candidate)
                 candidate = Card("0")
-            cardCombinationsIndex += 1
-
+            newCombination = CardSet(pendingCombination)
+            pendingCombination = []
+            replacedCard = True
+            
+            while replacedCard:
+                combinationAlreadyExists = False
+                replacedCard = False
+                for combination in cardCombinations:
+                    if combination.__eq__(newCombination):
+                        combinationAlreadyExists = True
+                        if spare.value in newCombination.values:
+                            cardToReplace = newCombination.findCardByValue(spare.value)
+                            if  newCombination.switchCard(cardToReplace,spare) == True: # the method swithCard replaces the card but returns true or false if the replacement
+                                print("card replaced successfully")
+                                replacedCard = True
+                            else:
+                                print("card we tried to replace is not there or the replacement is already there!")
+            if combinationAlreadyExists == False:
+                cardCombinations.append(newCombination)  
+                                 
         print("Card combinations initial:")        
-        for combo in cardCombinations:
-            for card in combo:
-                card.printCard()
+        for setOfCards in cardCombinations:
+            setOfCards.printSet()
             print(".............")
 
-        # print("Calculate best take:")
-        # for c in calculateBestTake(cardCombinations,len(talon)):
-        #     c.printCard()        
-        print("---------------")
+        overlap = True
+        getRidOf = []
+        while overlap == True:
+            overlap = False
+            for index1 in range(len(cardCombinations)):
+                for index2 in range(index1 + 1, len(cardCombinations)):
+                    if cardCombinations[index1].hasOverlap(cardCombinations[index2]) == False:
+                        cardCombinations[index1].addSet(cardCombinations[index2])
+                        getRidOf.append(index2)
+                        overlap = True
+            for index in getRidOf:
+                cardCombinations.pop(index)
+            getRidOf = []
 
-# create a separate method which will try to combine combinations to get the max points gain,
-# then you can compare with below best combinations and decide which to use
-# now the problem is that it takes only one combination, and it could take more than one:
-# eg 7+6 =13 and 1 +2 =13 it should take both
-
-        pointsGain = 0
-        cardsTaken = 0
-        listOfbestCombinationsLists = []
-        pointsList = []
-        bestCombinationsDict = {}
-        while len(cardCombinations) > 0:
-            talonCopy = [card for card in talon]
-            for cardSubset in cardCombinations:
-                bestCombinationsList = []
-                for cd in cardSubset:
-                    if cd in talonCopy:
-                        cd.printCard()
-                        try:
-                            talonCopy.remove(cd)
-                            pointsGain += cd.points
-                            cardsTaken += 1
-                            bestCombinationsList.append(cd)
-                        #    print("evo me unutra!")
-                        except:
-                            print("evo nas u except bloku...")
-                            # ovde valjda treba da ponistim kombinaciju... ne, izgleda da to radim dole u else
-                    else:
-                        print("neku od ovih karata smo vec skinuli...", cd.printCard())
-                        pointsGain = 0
-                        cardsTaken = 0
-                        break
-                if cardsTaken != 0:
-                    if len(talonCopy) == 0: # if all cards are taken in a combo one point is added for 'tabla'
-                        pointsGain += 1 
-                    pointsList.append(pointsGain)
-                    listOfbestCombinationsLists.append(bestCombinationsList)
-                cardCombinations.remove(cardSubset)
-                pointsGain = 0
-                cardsTaken = 0
+        print("Card combinations after recombination:")        
+        for setOfCards in cardCombinations:
+            setOfCards.printSet()
+            print(".............")        
+                
 
 
-                # for cardInList in bestCombinationsList:
-                #     bestCombinationsDict[pointsGain].append(cardInList)
-#                bestCombinationsDict.update({pointsGain : bestCombinationsList}) 
-        print("...................///.................")
-        for a in listOfbestCombinationsLists:
-            for c in a:
-                c.printCard()
-            print("...")
-        bestCombinationsDict = dict(zip(pointsList,listOfbestCombinationsLists))
+#         # print("Calculate best take:")
+#         # for c in calculateBestTake(cardCombinations,len(talon)):
+#         #     c.printCard()        
+#         print("---------------")
+
+# # create a separate method which will try to combine combinations to get the max points gain,
+# # then you can compare with below best combinations and decide which to use
+# # now the problem is that it takes only one combination, and it could take more than one:
+# # eg 7+6 =13 and 1 +2 =13 it should take both
+
+#         pointsGain = 0
+#         cardsTaken = 0
+#         listOfbestCombinationsLists = []
+#         pointsList = []
+#         bestCombinationsDict = {}
+#         while len(cardCombinations) > 0:
+#             talonCopy = [card for card in talon]
+#             for cardSet in cardCombinations:
+#                 bestCombinationsList = []
+#                 for cd in cardSet:
+#                     if cd in talonCopy:
+#                         cd.printCard()
+#                         try:
+#                             talonCopy.remove(cd)
+#                             pointsGain += cd.points
+#                             cardsTaken += 1
+#                             bestCombinationsList.append(cd)
+#                         #    print("evo me unutra!")
+#                         except:
+#                             print("evo nas u except bloku...")
+#                             # ovde valjda treba da ponistim kombinaciju... ne, izgleda da to radim dole u else
+#                     else:
+#                         print("neku od ovih karata smo vec skinuli...", cd.printCard())
+#                         pointsGain = 0
+#                         cardsTaken = 0
+#                         break
+#                 if cardsTaken != 0:
+#                     if len(talonCopy) == 0: # if all cards are taken in a combo one point is added for 'tabla'
+#                         pointsGain += 1 
+#                     pointsList.append(pointsGain)
+#                     listOfbestCombinationsLists.append(bestCombinationsList)
+#                 cardCombinations.remove(cardSet)
+#                 pointsGain = 0
+#                 cardsTaken = 0
 
 
-        for points in bestCombinationsDict:
-            print(points)
-            for card in bestCombinationsDict[points]:
-                card.printCard()
-            print(".................../.................")
+#                 # for cardInList in bestCombinationsList:
+#                 #     bestCombinationsDict[pointsGain].append(cardInList)
+# #                bestCombinationsDict.update({pointsGain : bestCombinationsList}) 
+#         print("...................///.................")
+#         for a in listOfbestCombinationsLists:
+#             for c in a:
+#                 c.printCard()
+#             print("...")
+#         bestCombinationsDict = dict(zip(pointsList,listOfbestCombinationsLists))
+
+
+#         for points in bestCombinationsDict:
+#             print(points)
+#             for card in bestCombinationsDict[points]:
+#                 card.printCard()
+#             print(".................../.................")
         
-# best pick:(highest number of points)        
-        for card in bestCombinationsDict[sorted(bestCombinationsDict)[len(bestCombinationsDict)-1]]:
-            card.printCard()
-        print("...................")        
-#        print(sorted(bestCombinationsDict)[len(bestCombinationsDict)-1])
+# # best pick:(highest number of points)        
+#         for card in bestCombinationsDict[sorted(bestCombinationsDict)[len(bestCombinationsDict)-1]]:
+#             card.printCard()
+#         print("...................")        
+# #        print(sorted(bestCombinationsDict)[len(bestCombinationsDict)-1])
 
-        # print("\n")
-        # if takenAcard:
-        #     self.points += card.points
-        #     self.taken += 1
-        # else:
-        #     talon.append(card)
+#         # print("\n")
+#         # if takenAcard:
+#         #     self.points += card.points
+#         #     self.taken += 1
+#         # else:
+#         #     talon.append(card)
 
-        # if len(talon) == 0:
-        #     self.points += 1
+#         # if len(talon) == 0:
+#         #     self.points += 1
 
 
                     

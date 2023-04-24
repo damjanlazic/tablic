@@ -32,7 +32,11 @@ class Card:
                 case 'A':
                     self.value = 1
                     self.points = 1
-
+    def __eq__(self, other):
+        if not hasattr(other, 'name'):
+           return False
+        return self.name == other.name
+    
     def copyCard(self, card):
         self.name = card.name
         self.value = card.value
@@ -42,14 +46,14 @@ class Card:
     def printCard(self):
         print(self.name, "\t", self.value, "\t", self.points )
 
-class CardSubset:
+class CardSet:
     def __init__(self, cards) -> None:
         self.cards = [card for card in cards]
         self.names = [card.name for card in cards]
         self.values = [card.value for card in cards]
         self.points = [card.points for card in cards]
         self.totalPoints = sum(self.points)
-    def printSubset(self):
+    def printSet(self): # prints the set so that each column contains name, value, points
         for n in self.names:
             print(n,end = "\t")
         print()
@@ -69,35 +73,36 @@ class CardSubset:
                 if self.names[index] != other.names[index]:
                      return False
         return True
-# napraviti funkcije za dodavanje jednog subseta drugom i prepoznavanje da li je subset deo drugog subseta    
-    def isCardInSubset(self,card): # checks if single card is in a subset (used in addCard() which is used in addSubset())
+# napraviti funkcije za dodavanje jednog Seta drugom i prepoznavanje da li je Set deo drugog Seta    
+    def isCardInSet(self,card): # checks if single card is in a Set (used in addCard() which is used in addSet())
         for name in self.names:
             if name == card.name:
                 return True
         return False
     
-    def inSubset(self, other): # checks if other is a subset of the self
+    def inSet(self, other): # checks if other is a sub-Set of the self
         for cardName in other.names:
             if cardName not in self.names:
                 return False
         return True
-    
-    def hasOverlap(self,other): # checks if two subsets overlap and returns a subset with overlapping cards or returns False if no overlap
-        if self.inSubset(other):
+
+# I probably only need to know do they overlap or not (True/False) but leave it like this for now...    
+    def hasOverlap(self,other): # checks if two Sets overlap and returns a Set with overlapping cards or returns False if no overlap
+        if self.inSet(other):
             return other
-        elif other.inSubset(self):
+        elif other.inSet(self):
             return self
         else:
-            overlap = [] # I could use isCardInSubset() here but it seems pointless
+            overlap = [] # I could use isCardInSet() here but it seems pointless
             for name in other.names:
                 if name in self.names:
                     overlap.append(Card(name))
             if overlap == []:
                 return False
             else:
-                return CardSubset(overlap)
-    def addCard(self,card): # if card is already in subset returns False (no card added), otherwise it adds the card to subset and retruns True
-        if self.isCardInSubset(card):
+                return CardSet(overlap)
+    def addCard(self,card): # if card is already in Set returns False (no card added), otherwise it adds the card to Set and retruns True
+        if self.isCardInSet(card) == True:
             return False # no card added
         self.cards.append(card)
         self.names.append(card.name)
@@ -105,8 +110,50 @@ class CardSubset:
         self.points.append(card.points)
         self.totalPoints += card.points
         return True # card added
-    
-    def addSubset(self,other): # adds the other subset only if there is no overlap (returns True of False whether added or not)
+    def removeCard(self, card):
+        if self.isCardInSet(card) == False:
+            print("Card you are trying to remove is not in the set!")
+            card.printCard()
+            return False # card you are trying to remove is not there
+        index = 0
+        for name in self.names:
+            if name == card.name:
+                self.names.pop(index)
+                self.cards.pop(index)
+                self.values.pop(index)
+                self.points.pop(index)
+                self.totalPoints -= card.points
+                return True
+            index += 1
+
+    def findCardByValue(self, value):
+    # since there could be more than one card with the same value in a set, we could get a list of cards, but 
+    # for now it seems enough just to get the first one since we only need this method for replacing one card at a time
+    #    cards = []
+        for card in self.cards:
+            if card.value == value:
+                return card
+    #            cards.append(card)
+    #    return cards
+
+    def switchCard(self,cardOut,cardIn):
+        if self.isCardInSet(cardIn):
+            print("No card added one of the two cards to be switched is already in set")
+            return False # no card added
+        index = 0
+        for card in self.cards:
+#            card.printCard()
+            if card.__eq__(cardOut) == True:
+                self.cards[index].copyCard(cardIn)
+                self.names[index] = cardIn.name
+                self.values[index] = cardIn.value
+                self.points[index] = cardIn.points
+                self.totalPoints = sum(self.points)
+                return True
+            index += 1
+
+
+    def addSet(self,other): # adds the other Set only if there is no overlap (returns True or False whether added or not)
         if self.hasOverlap(other) == False:
             for card in other.cards:
                 self.addCard(card)
@@ -169,12 +216,12 @@ class Player:
         doAgain = True
         while doAgain == True:
             for i in range(len(talonValues)+1):
-                for subset in combinations(talonValues,i):
-                    if sum(subset) == card.value:
-                            print("nasao subset: ",list(subset))
-                            if subset not in cardValueCombinations: 
-                                cardValueCombinations.append(subset)
-                                print("ubacio subset: ",list(subset))
+                for Set in combinations(talonValues,i):
+                    if sum(Set) == card.value:
+                            print("nasao Set: ",list(Set))
+                            if Set not in cardValueCombinations: 
+                                cardValueCombinations.append(Set)
+                                print("ubacio Set: ",list(Set))
         # ako ima kec, odraditi ovo dva puta, jednom za value=1 a drugi put za value = 11 pa spojiti rezultate
         # problem je sto se na pocetnom talonu moze naci od 1 do 4 keca tako da ovaj problem treba resiti
             if 1 in talonValues:
@@ -184,12 +231,12 @@ class Player:
                         break   # samo prvom kecu na koga naletimo dacemo vrednost 11, ako ih ima jos ovi ostali ostaju na 1 i to je dovoljno 
                     #     jer ionako dva keca po 11 ne mogu da se kombinuju 
                 for i in range(len(talonValues)+1):
-                    for subset in combinations(talonValues,i):
-                        if sum(subset) == card.value:
-                            print("nasao subset: ",list(subset))
-                            if subset not in cardValueCombinations: 
-                                cardValueCombinations.append(subset)
-                                print("ubacio subset: ",list(subset))        
+                    for Set in combinations(talonValues,i):
+                        if sum(Set) == card.value:
+                            print("nasao Set: ",list(Set))
+                            if Set not in cardValueCombinations: 
+                                cardValueCombinations.append(Set)
+                                print("ubacio Set: ",list(Set))        
             doAgain = False
             if card.value == 1 :
                 card.value = 11
@@ -222,8 +269,8 @@ class Player:
             print("..........")
 
         takenAcard = False
-        for cardSubset in cardCombinations:
-            for cd in cardSubset:
+        for cardSet in cardCombinations:
+            for cd in cardSet:
                 cd.printCard()
                 takenAcard = True
                 try:
