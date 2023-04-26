@@ -225,8 +225,21 @@ class mockPlayer:
         for setOfCards in cardCombinations:
             setOfCards.printSet()
             print(".............")        
-                
 
+        if len(cardCombinations) > 0:
+            bestSet = CardSet([card for card in cardCombinations[0].cards]) 
+            for setOfCards in cardCombinations:
+                if bestSet.totalPoints < setOfCards.totalPoints:
+                    bestSet.copySet(setOfCards)
+                elif bestSet.totalPoints == setOfCards.totalPoints:
+                    if len(bestSet.names) < len(setOfCards.names):
+                        bestSet.copySet(setOfCards)
+        else:
+            print("no card taken") # vidi sta ces s ovim
+        
+        print("Best set:")
+        bestSet.printSet()        
+        
 
 #         # print("Calculate best take:")
 #         # for c in calculateBestTake(cardCombinations,len(talon)):

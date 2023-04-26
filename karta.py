@@ -53,6 +53,13 @@ class CardSet:
         self.values = [card.value for card in cards]
         self.points = [card.points for card in cards]
         self.totalPoints = sum(self.points)
+    def copySet(self, otherSet) -> None:
+        self.cards = [card for card in otherSet.cards]
+        self.names = [name for name in otherSet.names]
+        self.values = [value for value in otherSet.values]
+        self.points = [points for points in otherSet.points]
+        self.totalPoints = sum(self.points)
+
     def printSet(self): # prints the set so that each column contains name, value, points
         for n in self.names:
             print(n,end = "\t")

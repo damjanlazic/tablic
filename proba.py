@@ -1,13 +1,13 @@
 from karta import *
 
-talon = [Card("Js"),Card("Td"),Card("2s"),Card("2c"),Card("4s")]
+talon = [Card("Js"),Card("Td"),Card("As"),Card("2c"),Card("Ac")]
 for c in talon:
     print(c.name)
 
 igrac0 = Player(1)
-igrac0.hand = [Card("3h"),Card("2h"),Card("Tc"),Card("Ts"),Card("Jc"),Card("2d")]
+igrac0.hand = [Card("5h"),Card("2h"),Card("Tc"),Card("Ts"),Card("Jc"),Card("2d")]
 igrac1 = Player(1)
-igrac1.hand = [Card("Ks"),Card("8s"),Card("7h"),Card("8h"),Card("9c"),Card("Ac")]
+igrac1.hand = [Card("Ks"),Card("8s"),Card("7h"),Card("8h"),Card("9c"),Card("Ad")]
 for i in range(6):
     igrac0.play(talon)
     igrac0.printStatus()
