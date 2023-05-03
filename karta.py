@@ -179,30 +179,14 @@ class Player:
         self.newPoints = 0
         self.newTaken = 0
 
-# I don't need to compare two player objects?
-
-    # def __eq__(self, other):
-    #     if not hasattr(other, 'name'):
-    #        return False
-    #     return self.name == other.name
-
-# obsolete: now use self.hand.printSet()    
-    # def printHand(self):
-    #     print("player: ", self.name, "\ncards in hand:")
-    #     for i in self.hand:
-    #         i.printCard()
-
+    def printHand(self):
+        print("Player: ", self.name, "\nCards in hand: ", end = "\t")
+        for name in self.hand.names:
+            print(name, end ="\t")
+        print("\n...............")
 
     def printStatus(self):
         print("player: ", self.name, "\nnew cards taken: ",self.newTaken,"\nnew points collected: ",self.newPoints,"\n", "\ntotal cards taken: ",self.taken,"\ntotal points: ",self.points,"\n")
-
-    # def findInTalon(valueCombination, talon):
-    #     talonCopy = deepcopy(talon)
-    #     cards = {} # idea is to have a dictionary where keys are cardValues and values are lists of cards on talon with those values
-    #     for value in valueCombination:
-    #         for card in talonCopy:
-    #             if value == card.value:
-    #                 cards[value].append(card)
         
 
     def play(self,talon):
@@ -213,8 +197,8 @@ class Player:
         
         while cardName not in self.hand.names: #handNames:
             cardName = input("Pick a card to throw: ")
-        card = Card(cardName)
-        self.hand.removeCard(card)
+        cardPlayed = Card(cardName)
+        self.hand.removeCard(cardPlayed)
 
         # maxIndex = len(self.hand.names)
         # i = 0
@@ -232,7 +216,7 @@ class Player:
         while doAgain == True:
             for i in range(len(talonValues)+1):
                 for subset in combinations(talonValues,i):
-                    if sum(subset) == card.value:
+                    if sum(subset) == cardPlayed.value:
                             print("nasao subset: ",list(subset))
                             if subset not in cardValueCombinations: 
                                 cardValueCombinations.append(list(subset))
@@ -247,21 +231,23 @@ class Player:
                     #     jer ionako dva keca po 11 ne mogu da se kombinuju 
                 for i in range(len(talonValues)+1):
                     for subset in combinations(talonValues,i):
-                        if sum(subset) == card.value:
+                        if sum(subset) == cardPlayed.value:
                             print("nasao subset: ",list(subset))
                             if subset not in cardValueCombinations: 
                                 cardValueCombinations.append(list(subset))
                                 print("ubacio subset: ",list(subset))        
             doAgain = False
-            if card.value == 1 :
-                card.value = 11
+            if cardPlayed.value == 1 :
+                cardPlayed.value = 11
                 doAgain = True
-        
+        print("\nCardValueCombinations: ")
         for subset in cardValueCombinations:
             for i in range(len(subset)):
                 if subset[i] == 11:
                     subset[i] = 1
-
+                print(subset[i])
+            print(".......end..of..subset.........")
+        print("...............the..end....................")
         # cardCombinations = [list() for x in cardValueCombinations]
         cardCombinations = []
         
@@ -271,6 +257,51 @@ class Player:
         spare = Card("0")
         spareIndex = 0
         cardCombinationsIndex = 0
+# first time run with just one set of talonCopy
+        talonCopy = CardSet(talon)  # [Card(card.name) for card in talon] 
+        for combination in cardValueCombinations:
+            pendingCombination = []
+            for value in combination:
+                index = 0
+                for card in talonCopy.cards:
+                    # if value == card.value and candidate.points <= card.points:
+                    if value == card.value:
+                        if candidate.points <= card.points:
+                            candidate.copyCard(card)
+                            candidateIndex = index
+                        # else: 
+                        #     spare.copyCard(card) # make a list of spare cards since you need them all
+                        #     spareIndex = index     
+                        #     # print("spare =",spareIndex)
+                        #     spare.printCard()                 
+                    index += 1
+                if not candidate.__eq__(Card("0")):
+                    pendingCombination.append(candidate)
+                    talonCopy.removeCard(candidate)
+                candidate = Card("0")
+            newCombination = CardSet(pendingCombination)
+            pendingCombination = []
+
+            replacedCard = True
+            while replacedCard:
+                combinationAlreadyExists = False
+                replacedCard = False
+                for combination in cardCombinations:
+                    if combination.__eq__(newCombination):
+                        combinationAlreadyExists = True
+            #             if spare.value in newCombination.values:
+            #                 cardToReplace = newCombination.findCardByValue(spare.value)
+            #                 if  newCombination.switchCard(cardToReplace,spare) == True: # the method swithCard replaces the card but returns true or false if the replacement
+            #                     print("card replaced successfully")
+            #                     replacedCard = True
+            #                 else:
+            #                     print("card we tried to replace is not there or the replacement is already there!")
+            if combinationAlreadyExists == False:
+                cardCombinations.append(newCombination) 
+
+# 2nd run with a new talon copy for each combination
+        candidate = Card("0")
+        spare = Card("0")
         for combination in cardValueCombinations:
             pendingCombination = []
             talonCopy = CardSet(talon)  # [Card(card.name) for card in talon]
@@ -294,8 +325,8 @@ class Player:
                 candidate = Card("0")
             newCombination = CardSet(pendingCombination)
             pendingCombination = []
+
             replacedCard = True
-            
             while replacedCard:
                 combinationAlreadyExists = False
                 replacedCard = False
@@ -353,31 +384,40 @@ class Player:
         
         if takenAcard == True:
             # add the card that player played with
-            self.points += card.points
-            self.taken += 1
+            self.newPoints += cardPlayed.points
+            self.newTaken += 1
 
             print("Best set:")
             bestSet.printSet() 
 
             talonCopy = CardSet(talon)
+            print('talonCopy = CardSet(talon)')
+            talonCopy.printSet()
             if len(talon) == len(bestSet.names): # +1 for tabla
-                self.points += 1
                 self.newPoints += 1
+                print("TABLA!")
+
             for card in bestSet.cards:
                 talonCopy.removeCard(card)
-            self.points += bestSet.totalPoints
-            self.taken += len(bestSet.names)
-            
-            self.newPoints = bestSet.totalPoints
-            self.newTaken = len(bestSet.names)
-      
-            for card in talon:
-                if talonCopy.isCardInSet(card) == False:
-                    talon.remove(card)
+            self.newPoints += bestSet.totalPoints
+            self.newTaken += len(bestSet.names)
+
+            print('talonCopy after removing the taken cards:')
+            talonCopy.printSet()
+
+            for talonCard in talon:
+                if talonCopy.isCardInSet(talonCard) == False:
+                    talon.remove(talonCard)
         else:
-            talon.append(card)
+            talon.append(cardPlayed)
             self.newPoints = 0
             self.newTaken = 0
+        self.points += self.newPoints
+        self.taken += self.newTaken
+
+        print("talon u play():\n..............")
+        for c in talon:
+            c.printCard()
 
 # ako ima dve karte iste vrednosti (npr. Ac i As) treba obe da budu u pojedinacnim kombinacijama
 # ovo izgleda nije tako, nego vazi samo za karte koje imaju isti broj a razlicito poena nose

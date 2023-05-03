@@ -215,11 +215,13 @@ class mockPlayer:
                 for index2 in range(index1 + 1, len(cardCombinations)):
                     if cardCombinations[index1].hasOverlap(cardCombinations[index2]) == False:
                         cardCombinations[index1].addSet(cardCombinations[index2])
-                        getRidOf.append(index2)
+                        # getRidOf.append(index2)
                         overlap = True
-            for index in getRidOf:
-                cardCombinations.pop(index)
-            getRidOf = []
+# it's not neccessary to get rid of the added sets, and it causes index out of bounds this way so 
+# I am getting rid of it alltoghether
+            # for index in getRidOf:
+            #     cardCombinations.pop(index)
+            # getRidOf = []
 
         print("Card combinations after recombination:")        
         for setOfCards in cardCombinations:
