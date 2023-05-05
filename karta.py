@@ -191,27 +191,16 @@ class Player:
 
     def play(self,talon):
         cardName = " "
-        # handNames = []
-        # for i in self.hand:
-        #     handNames.append(i.name)
-        
+        self.printHand()
         while cardName not in self.hand.names: #handNames:
             cardName = input("Pick a card to throw: ")
         cardPlayed = Card(cardName)
         self.hand.removeCard(cardPlayed)
 
-        # maxIndex = len(self.hand.names)
-        # i = 0
-        # while i < maxIndex:
-        #     if cardName.__eq__(self.hand[i].name):
-        #         self.hand.pop(i)
-        #         maxIndex -= 1
-        #     i += 1
-
         talonValues = []
         cardValueCombinations = []
-        for c in talon:
-            talonValues.append(c.value)
+        for v in talon.values:
+            talonValues.append(v)
         doAgain = True
         while doAgain == True:
             for i in range(len(talonValues)+1):
@@ -245,20 +234,19 @@ class Player:
             for i in range(len(subset)):
                 if subset[i] == 11:
                     subset[i] = 1
+# following 3 lines:  test purposes only
                 print(subset[i])
             print(".......end..of..subset.........")
         print("...............the..end....................")
-        # cardCombinations = [list() for x in cardValueCombinations]
+
         cardCombinations = []
         
         candidate = Card("0")
-        candidateIndex = 0
-        listOfCandidateIndexes = []
         spare = Card("0")
-        spareIndex = 0
-        cardCombinationsIndex = 0
+
 # first time run with just one set of talonCopy
-        talonCopy = CardSet(talon)  # [Card(card.name) for card in talon] 
+        talonCopy = CardSet([Card("0")])
+        talonCopy.copySet(talon)
         for combination in cardValueCombinations:
             pendingCombination = []
             for value in combination:
@@ -267,13 +255,7 @@ class Player:
                     # if value == card.value and candidate.points <= card.points:
                     if value == card.value:
                         if candidate.points <= card.points:
-                            candidate.copyCard(card)
-                            candidateIndex = index
-                        # else: 
-                        #     spare.copyCard(card) # make a list of spare cards since you need them all
-                        #     spareIndex = index     
-                        #     # print("spare =",spareIndex)
-                        #     spare.printCard()                 
+                            candidate.copyCard(card)                 
                     index += 1
                 if not candidate.__eq__(Card("0")):
                     pendingCombination.append(candidate)
@@ -289,13 +271,6 @@ class Player:
                 for combination in cardCombinations:
                     if combination.__eq__(newCombination):
                         combinationAlreadyExists = True
-            #             if spare.value in newCombination.values:
-            #                 cardToReplace = newCombination.findCardByValue(spare.value)
-            #                 if  newCombination.switchCard(cardToReplace,spare) == True: # the method swithCard replaces the card but returns true or false if the replacement
-            #                     print("card replaced successfully")
-            #                     replacedCard = True
-            #                 else:
-            #                     print("card we tried to replace is not there or the replacement is already there!")
             if combinationAlreadyExists == False:
                 cardCombinations.append(newCombination) 
 
@@ -304,19 +279,16 @@ class Player:
         spare = Card("0")
         for combination in cardValueCombinations:
             pendingCombination = []
-            talonCopy = CardSet(talon)  # [Card(card.name) for card in talon]
+            talonCopy.copySet(talon) 
             for value in combination:
                 index = 0
                 for card in talonCopy.cards:
-                    # if value == card.value and candidate.points <= card.points:
                     if value == card.value:
                         if candidate.points <= card.points:
                             candidate.copyCard(card)
                             candidateIndex = index
                         else: 
-                            spare.copyCard(card) # make a list of spare cards since you need them all
-                            spareIndex = index     
-                            # print("spare =",spareIndex)
+                            spare.copyCard(card)      
                             spare.printCard()                 
                     index += 1
 
@@ -349,20 +321,13 @@ class Player:
             print(".............")
 
         overlap = True
-        getRidOf = []
         while overlap == True:
             overlap = False
             for index1 in range(len(cardCombinations)):
                 for index2 in range(index1 + 1, len(cardCombinations)):
                     if cardCombinations[index1].hasOverlap(cardCombinations[index2]) == False:
                         cardCombinations[index1].addSet(cardCombinations[index2])
-                        # getRidOf.append(index2)
                         overlap = True
-# it's not neccessary to get rid of the added sets, and it causes index out of bounds this way so 
-# I am getting rid of it alltoghether
-            # for index in getRidOf:
-            #     cardCombinations.pop(index)
-            # getRidOf = []
 
         print("Card combinations after recombination:")        
         for setOfCards in cardCombinations:
@@ -379,7 +344,7 @@ class Player:
                     if len(bestSet.names) < len(setOfCards.names):
                         bestSet.copySet(setOfCards)
         else:
-            print("no card taken") # vidi sta ces s ovim
+            print("no card taken") # test purposes only
             takenAcard = False
         
         if takenAcard == True:
@@ -390,10 +355,10 @@ class Player:
             print("Best set:")
             bestSet.printSet() 
 
-            talonCopy = CardSet(talon)
+            talonCopy.copySet(talon)
             print('talonCopy = CardSet(talon)')
             talonCopy.printSet()
-            if len(talon) == len(bestSet.names): # +1 for tabla
+            if len(talon.names) == len(bestSet.names): # +1 for tabla
                 self.newPoints += 1
                 print("TABLA!")
 
@@ -401,23 +366,23 @@ class Player:
                 talonCopy.removeCard(card)
             self.newPoints += bestSet.totalPoints
             self.newTaken += len(bestSet.names)
-
+            
+            # test purposes only
             print('talonCopy after removing the taken cards:')
             talonCopy.printSet()
 
-            for talonCard in talon:
-                if talonCopy.isCardInSet(talonCard) == False:
-                    talon.remove(talonCard)
+            talon.copySet(talonCopy)
         else:
-            talon.append(cardPlayed)
+            talon.addCard(cardPlayed)
             self.newPoints = 0
             self.newTaken = 0
         self.points += self.newPoints
         self.taken += self.newTaken
 
+        self.printStatus()
+        
+        # test purposes only
         print("talon u play():\n..............")
-        for c in talon:
-            c.printCard()
-
-# ako ima dve karte iste vrednosti (npr. Ac i As) treba obe da budu u pojedinacnim kombinacijama
-# ovo izgleda nije tako, nego vazi samo za karte koje imaju isti broj a razlicito poena nose
+        # for c in talon:
+        #     c.printCard()
+        talon.printSet()
