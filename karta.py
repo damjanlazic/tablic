@@ -77,10 +77,17 @@ class CardSet:
             return False
         if len(self.names) != len(other.names):
              return False
-        for index in range(0,len(self.names)):
-                if self.names[index] != other.names[index]:
-                     return False
+        for card in other.cards:
+            if self.isCardInSet(card) == False:
+                return False
+        for card in self.cards:
+            if other.isCardInSet(card) == False:
+                return False
         return True
+        # for index in range(0,len(self.names)):
+        #         if self.names[index] != other.names[index]:
+        #              return False
+        # return True
 # napraviti funkcije za dodavanje jednog Seta drugom i prepoznavanje da li je Set deo drugog Seta    
     def isCardInSet(self,card): # checks if single card is in a Set (used in addCard() which is used in addSet())
         for name in self.names:
@@ -94,8 +101,14 @@ class CardSet:
                 return False
         return True
 
-# I probably only need to know do they overlap or not (True/False) but leave it like this for now...    
-    def hasOverlap(self,other): # checks if two Sets overlap and returns a Set with overlapping cards or returns False if no overlap
+   
+    def hasOverlap(self,other): # checks if two Sets overlap and returns True or False 
+            for name in other.names:
+                if name in self.names:
+                    return True
+            return False
+            
+    def findOverlap(self,other): # finds the overlapping cards of two sets and returns a CardSet with overlapping cards or returns False if no overlap
         if self.inSet(other):
             return other
         elif other.inSet(self):
@@ -119,10 +132,10 @@ class CardSet:
         self.totalPoints += card.points
         return True # card added
     def removeCard(self, card):
-        if self.isCardInSet(card) == False:
-            print("Card you are trying to remove is not in the set!")
-            card.printCard()
-            return False # card you are trying to remove is not there
+        # if self.isCardInSet(card) == False:
+        #     print("Card you are trying to remove is not in the set!")
+        #     card.printCard()
+        #     return False # card you are trying to remove is not there
         index = 0
         for name in self.names:
             if name == card.name:
@@ -133,16 +146,15 @@ class CardSet:
                 self.totalPoints -= card.points
                 return True
             index += 1
+        print("Card you are trying to remove is not in the set!")
+        return False    
 
     def findCardByValue(self, value):
-    # since there could be more than one card with the same value in a set, we could get a list of cards, but 
-    # for now it seems enough just to get the first one since we only need this method for replacing one card at a time
-    #    cards = []
+        cards = []
         for card in self.cards:
             if card.value == value:
-                return card
-    #            cards.append(card)
-    #    return cards
+                cards.append(card)
+        return cards
 
     def switchCard(self,cardOut,cardIn):
         if self.isCardInSet(cardIn):
@@ -168,7 +180,15 @@ class CardSet:
             return True
         return False
 
-
+class SameValueCardSet(CardSet):
+    def __init__(self, cards) -> None:
+        super().__init__(cards)
+        self.value = cards[0].value
+        self.numberOfCards = len(self.values)
+    def printSet(self):
+        print("Same card set of cards with value: ", self.value)
+        print("Number of cards is : ", self.numberOfCards)
+        super().printSet()
 
 class Player:
     def __init__(self,name) -> None:
@@ -244,39 +264,25 @@ class Player:
         candidate = Card("0")
         spare = Card("0")
 
-# first time run with just one set of talonCopy
+# first time run with just one set of talonCopy needed just for those cases when we have few combinations but also
+# cards of same value but different points to chose from
+# seemingly I deleted this 
+
+
         talonCopy = CardSet([Card("0")])
         talonCopy.copySet(talon)
-        for combination in cardValueCombinations:
-            pendingCombination = []
-            for value in combination:
-                index = 0
-                for card in talonCopy.cards:
-                    # if value == card.value and candidate.points <= card.points:
-                    if value == card.value:
-                        if candidate.points <= card.points:
-                            candidate.copyCard(card)                 
-                    index += 1
-                if not candidate.__eq__(Card("0")):
-                    pendingCombination.append(candidate)
-                    talonCopy.removeCard(candidate)
-                candidate = Card("0")
-            newCombination = CardSet(pendingCombination)
-            pendingCombination = []
+        sameValueCards = []
+        print("set(talonCopy.values)",set(talonCopy.values))
+        for value in set(talonCopy.values):
+            pendingCardSet = SameValueCardSet(talonCopy.findCardByValue(value))
+            pendingCardSet.printSet()
 
-            replacedCard = True
-            while replacedCard:
-                combinationAlreadyExists = False
-                replacedCard = False
-                for combination in cardCombinations:
-                    if combination.__eq__(newCombination):
-                        combinationAlreadyExists = True
-            if combinationAlreadyExists == False:
-                cardCombinations.append(newCombination) 
+            if pendingCardSet.numberOfCards > 1:
+                sameValueCards.append(pendingCardSet)
 
 # 2nd run with a new talon copy for each combination
         candidate = Card("0")
-        spare = Card("0")
+    #    spare = Card("0")
         for combination in cardValueCombinations:
             pendingCombination = []
             talonCopy.copySet(talon) 
@@ -285,49 +291,76 @@ class Player:
                 for card in talonCopy.cards:
                     if value == card.value:
                         if candidate.points <= card.points:
+                        #    spare.copyCard(candidate)
                             candidate.copyCard(card)
-                            candidateIndex = index
-                        else: 
-                            spare.copyCard(card)      
-                            spare.printCard()                 
-                    index += 1
+                        #    candidateIndex = index
+                        # else: 
+                        #     spare.copyCard(card)      
+                        #     spare.printCard()                 
+                    # index += 1
 
                 pendingCombination.append(candidate)
+                # print("candidate added: ", candidate.name)
                 talonCopy.removeCard(candidate)
                 candidate = Card("0")
             newCombination = CardSet(pendingCombination)
             pendingCombination = []
 
-            replacedCard = True
-            while replacedCard:
-                combinationAlreadyExists = False
-                replacedCard = False
-                for combination in cardCombinations:
-                    if combination.__eq__(newCombination):
-                        combinationAlreadyExists = True
-                        if spare.value in newCombination.values:
-                            cardToReplace = newCombination.findCardByValue(spare.value)
-                            if  newCombination.switchCard(cardToReplace,spare) == True: # the method swithCard replaces the card but returns true or false if the replacement
-                                print("card replaced successfully")
-                                replacedCard = True
-                            else:
-                                print("card we tried to replace is not there or the replacement is already there!")
+            combinationAlreadyExists = False
+            for combination in cardCombinations:
+                if combination.__eq__(newCombination):
+                    combinationAlreadyExists = True
+
             if combinationAlreadyExists == False:
                 cardCombinations.append(newCombination)  
-                                 
+
+
+        addedCombination = True
+        while addedCombination == True:
+            addedCombination = False
+            for combination in cardCombinations:
+                for valueSet in sameValueCards:
+                    overlap = combination.findOverlap(valueSet)
+                    if combination.hasOverlap(valueSet) == True:
+                        print("overlap ima:")
+                        overlap.printSet()
+                        for card in combination.cards:
+                            if card.value == valueSet.value:
+                                for valueSetCard in valueSet.cards:
+                                    newCombination = CardSet([Card("0")]) # need to recreate this otherwise it will modify the entry in combinations
+                                    newCombination.copySet(combination)
+                                    newCombination.switchCard(card,valueSetCard)
+                                    if newCombination.__eq__(combination) == False:
+                                        # here need to check if the combination is already in cardCombinations 
+                                        if newCombination not in cardCombinations:
+                                            cardCombinations.append(newCombination)
+                                            addedCombination = True
+
+        # for combination in cardCombinations:
+        #     for sameValueSet in sameValueCards:
+        #         overlap = combination.hasOverlap(sameValueSet)
+                
+
         print("Card combinations initial:")        
         for setOfCards in cardCombinations:
             setOfCards.printSet()
             print(".............")
 
-        overlap = True
-        while overlap == True:
-            overlap = False
+        combinationJoined = True
+        while combinationJoined == True:
+            combinationJoined = False
             for index1 in range(len(cardCombinations)):
                 for index2 in range(index1 + 1, len(cardCombinations)):
                     if cardCombinations[index1].hasOverlap(cardCombinations[index2]) == False:
+                        print("cardCombinations[{}] hasOverlap==False with cardCombinations[{}]".format(index1,index2))
+                        cardCombinations[index1].printSet()
+                        print("..................end of set........................")
+                        cardCombinations[index2].printSet()
+                        print("..................end of set........................")
                         cardCombinations[index1].addSet(cardCombinations[index2])
-                        overlap = True
+                        combinationJoined = True
+                        print("cardCombinations[{}] is now: ".format(index1))
+                        cardCombinations[index1].printSet()
 
         print("Card combinations after recombination:")        
         for setOfCards in cardCombinations:
@@ -380,9 +413,9 @@ class Player:
         self.taken += self.newTaken
 
         self.printStatus()
-        
+
         # test purposes only
-        print("talon u play():\n..............")
+    #    print("talon u play():\n..............")
         # for c in talon:
         #     c.printCard()
-        talon.printSet()
+    #    talon.printSet()
