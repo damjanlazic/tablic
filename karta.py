@@ -1,40 +1,56 @@
 from itertools import combinations
 from copy import deepcopy
+import logging
 
+logging.basicConfig(filename='tablicLog.log', filemode='w', level=logging.DEBUG, format='%(name)s - %(levelname)s - %(message)s')
+# logging.basicConfig(level=logging.DEBUG)
+# logging.warning('This will get logged to a file')
 
 
 class Card:
     def __init__(self, name) -> None:
         self.name = name
-        try:
-            self.value = int(self.name[0])
-            if self.name == "2c":
-                self.points = 1
-            else:
-                self.points = 0
-        except:
-            match self.name[0]:
-                case 'T':
-                    self.value = 10
-                    if self.name[1] == "d" :
-                        self.points = 2
-                    else:
-                        self.points = 1
-                case 'J':
-                    self.value = 12
-                    self.points = 1
-                case 'D':
-                    self.value = 13
-                    self.points = 1
-                case 'K':
-                    self.value = 14
-                    self.points = 1
-                case 'A':
-                    self.value = 1
-                    self.points = 1
-    def __eq__(self, other):
+        self.value, self.points = self.assignPointsValue()
+        logging.debug("Card object created name = {}, value = {}, points = {}".format(self.name,self.value,self.points))
+    
+    def assignPointsValue(self):
+        if self.name == None:
+            points = None
+            value = None
+        else:
+            try:
+                value = int(self.name[0])
+                if self.name == "2c":
+                    points = 1
+                else:
+                    points = 0
+            except:
+                match self.name[0]:
+                    case 'T':
+                        value = 10
+                        if self.name[1] == "d" :
+                            points = 2
+                        else:
+                            points = 1
+                    case 'J':
+                        value = 12
+                        points = 1
+                    case 'D':
+                        value = 13
+                        points = 1
+                    case 'K':
+                        value = 14
+                        points = 1
+                    case 'A':
+                        value = 1
+                        points = 1
+        return value, points
+            
+    def sameAs(self, other):
         if not hasattr(other, 'name'):
            return False
+        logging.debug("Card.sameAs(self,other) \n ...self: name = {}, value = {}, points = {}\n ...other: name = {}, value = {}, points = {}".format(self.name,self.value,self.points,other.name,other.value,other.points))
+        logging.debug("Card.sameAs(self,other) returns: {}".format(self.name == other.name))
         return self.name == other.name
     
     def copyCard(self, card):
@@ -72,18 +88,29 @@ class CardSet:
             print(p,end = "\t")
         print()
         print("total points: ",self.totalPoints)
-    def __eq__(self, other):
+        # return (' '.join([name for name in self.names]))
+    
+    def sameAs(self, other):
+        logging.debug("CardSet.sameAs(self,other):")
+        logging.debug("...self: \t {}".format(' '.join([name for name in self.names])))
+        logging.debug("...other:\t {}".format(' '.join([name for name in other.names])))  
         if not hasattr(other, 'totalPoints'):
+            logging.debug("...if not hasattr() returns false")
             return False
         if len(self.names) != len(other.names):
-             return False
+            logging.debug("...if different len(names) returns false")
+            return False
         for card in other.cards:
             if self.isCardInSet(card) == False:
+                logging.debug("...other has card that self has not, card: {} returns false".format(card.name))
                 return False
         for card in self.cards:
             if other.isCardInSet(card) == False:
+                logging.debug("...self has card that other has not, card: {} returns false".format(card.name))
                 return False
+        logging.debug("...CardSet.sameAs(self,other) returns: True")
         return True
+    
         # for index in range(0,len(self.names)):
         #         if self.names[index] != other.names[index]:
         #              return False
@@ -92,7 +119,9 @@ class CardSet:
     def isCardInSet(self,card): # checks if single card is in a Set (used in addCard() which is used in addSet())
         for name in self.names:
             if name == card.name:
+                logging.debug("isCardInSet, set: {};\t card: {} returns true".format(' '.join([name for name in self.names]),card.name))
                 return True
+        logging.debug("isCardInSet, set: {};\t card: {} returns false".format(' '.join([name for name in self.names]),card.name))
         return False
     
     def inSet(self, other): # checks if other is a sub-Set of the self
@@ -139,14 +168,17 @@ class CardSet:
         index = 0
         for name in self.names:
             if name == card.name:
-                self.names.pop(index)
-                self.cards.pop(index)
-                self.values.pop(index)
-                self.points.pop(index)
-                self.totalPoints -= card.points
-                return True
+                try:
+                    self.names.pop(index)
+                    self.cards.pop(index)
+                    self.values.pop(index)
+                    self.points.pop(index)
+                    self.totalPoints -= card.points
+                    return True
+                except:
+                    logging.warning("CardSet.removeCard(self,card): self:",self.printSet(),"\t card to be removed: ",card.printCard()," could not be removed")
             index += 1
-        print("Card you are trying to remove is not in the set!")
+        logging.warning("CardSet.removeCard(self,card): ",card.printCard()," Card you are trying to remove is not in the set!")
         return False    
 
     def findCardByValue(self, value):
@@ -163,7 +195,7 @@ class CardSet:
         index = 0
         for card in self.cards:
 #            card.printCard()
-            if card.__eq__(cardOut) == True:
+            if card.sameAs(cardOut) == True:
                 self.cards[index].copyCard(cardIn)
                 self.names[index] = cardIn.name
                 self.values[index] = cardIn.value
@@ -308,7 +340,7 @@ class Player:
 
             combinationAlreadyExists = False
             for combination in cardCombinations:
-                if combination.__eq__(newCombination):
+                if combination.sameAs(newCombination):
                     combinationAlreadyExists = True
 
             if combinationAlreadyExists == False:
@@ -330,7 +362,7 @@ class Player:
                                     newCombination = CardSet([Card("0")]) # need to recreate this otherwise it will modify the entry in combinations
                                     newCombination.copySet(combination)
                                     newCombination.switchCard(card,valueSetCard)
-                                    if newCombination.__eq__(combination) == False:
+                                    if newCombination.sameAs(combination) == False:
                                         # here need to check if the combination is already in cardCombinations 
                                         if newCombination not in cardCombinations:
                                             cardCombinations.append(newCombination)
