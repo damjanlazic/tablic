@@ -10,7 +10,7 @@ talon.printSet()
 # igrac0.hand = CardSet([Card("5h"),Card("2h"),Card("Tc"),Card("Ts"),Card("Jc"),Card("2d")])
 
 igrac1 = Player(1)
-igrac1.hand = CardSet([Card("Ks"),Card("6s"),Card("7h"),Card("Jh"),Card("2h"),Card("Ad")])
+igrac1.hand = CardSet([Card("Ks"),Card("6s"),Card("4h"),Card("Jh"),Card("2h"),Card("Ad")])
 
 # for i in range(6):
 #     igrac0.play(talon)

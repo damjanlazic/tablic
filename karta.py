@@ -2,10 +2,10 @@ from itertools import combinations
 from copy import deepcopy
 import logging
 
-logging.basicConfig(filename='tablicLog.log', filemode='w', level=logging.DEBUG, format='%(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='tablicLog.log', filemode='w', level=logging.DEBUG, format='%(name)s - %(levelname)s - %(message)s - %(lineno)d')
 # logging.basicConfig(level=logging.DEBUG)
 # logging.warning('This will get logged to a file')
-
+# in format to add time: %(asctime)s
 
 class Card:
     def __init__(self, name) -> None:
@@ -15,7 +15,7 @@ class Card:
     
     def assignPointsValue(self):
         if self.name == None:
-            points = None
+            points = -1
             value = None
         else:
             try:
@@ -53,14 +53,22 @@ class Card:
         logging.debug("Card.sameAs(self,other) returns: {}".format(self.name == other.name))
         return self.name == other.name
     
-    def copyCard(self, card):
-        self.name = card.name
-        self.value = card.value
-        self.points = card.points
-
+    # def copyCard(self, card):
+    #     self.name = card.name
+    #     self.value = card.value
+    #     self.points = card.points
+# change the copyCard mehtod in this way, use it to initiate an object like this: newCard = oldCard.copyCard()
+    def copyCard(self):
+        return Card(self.name)
+    
             
+    # def printCard(self):
+    #     print(self.name, "\t", self.value, "\t", self.points )
+    
+    # so I can print cards easily to the logs, need to check if it will also print to the console?
     def printCard(self):
-        print(self.name, "\t", self.value, "\t", self.points )
+        return f"{self.name} | {self.value} | {self.points}"
+
 
 class CardSet:
     def __init__(self, cards) -> None:
@@ -69,7 +77,7 @@ class CardSet:
         self.values = [card.value for card in cards]
         self.points = [card.points for card in cards]
         self.totalPoints = sum(self.points)
-    
+# need to change this similar to copyCard()    
     def copySet(self, otherSet) -> None:
         self.cards = [card for card in otherSet.cards]
         self.names = [name for name in otherSet.names]
@@ -111,19 +119,26 @@ class CardSet:
         logging.debug("...CardSet.sameAs(self,other) returns: True")
         return True
     
-        # for index in range(0,len(self.names)):
-        #         if self.names[index] != other.names[index]:
-        #              return False
-        # return True
-# napraviti funkcije za dodavanje jednog Seta drugom i prepoznavanje da li je Set deo drugog Seta    
+
+    def isSetInListOfSets(self,listOfSets):
+        for set in listOfSets:
+            if self.sameAs(set) == True:
+                return True
+        return False
+
     def isCardInSet(self,card): # checks if single card is in a Set (used in addCard() which is used in addSet())
+        if card.name == None:
+            logging.warning("isCardInSet, set: {};\t card: {} returns false - tried to check for card of value None".format(' '.join([name for name in self.names]),card.name))
+
+            return False
         for name in self.names:
             if name == card.name:
                 logging.debug("isCardInSet, set: {};\t card: {} returns true".format(' '.join([name for name in self.names]),card.name))
                 return True
         logging.debug("isCardInSet, set: {};\t card: {} returns false".format(' '.join([name for name in self.names]),card.name))
         return False
-    
+
+# this is not used I think... consider deleting this...    
     def inSet(self, other): # checks if other is a sub-Set of the self
         for cardName in other.names:
             if cardName not in self.names:
@@ -176,9 +191,9 @@ class CardSet:
                     self.totalPoints -= card.points
                     return True
                 except:
-                    logging.warning("CardSet.removeCard(self,card): self:",self.printSet(),"\t card to be removed: ",card.printCard()," could not be removed")
+                    logging.warning("CardSet.removeCard(self,card): self:",self.printSet(),"\t card to be removed: " + card.printCard() + " could not be removed")
             index += 1
-        logging.warning("CardSet.removeCard(self,card): ",card.printCard()," Card you are trying to remove is not in the set!")
+        logging.warning("CardSet.removeCard(self,card): " + card.printCard() + " Card you are trying to remove is not in the set!")
         return False    
 
     def findCardByValue(self, value):
@@ -190,17 +205,19 @@ class CardSet:
 
     def switchCard(self,cardOut,cardIn):
         if self.isCardInSet(cardIn):
-            print("No card added one of the two cards to be switched is already in set")
+            logging.warning("switchCard(self,card): " + cardIn.printCard() + " No card added one of the two cards to be switched is already in set")
+            # print("No card added one of the two cards to be switched is already in set")
             return False # no card added
         index = 0
         for card in self.cards:
 #            card.printCard()
             if card.sameAs(cardOut) == True:
-                self.cards[index].copyCard(cardIn)
+                self.cards[index] = cardIn.copyCard() # old use: self.cards[index].copyCard(cardIn)
                 self.names[index] = cardIn.name
                 self.values[index] = cardIn.value
                 self.points[index] = cardIn.points
                 self.totalPoints = sum(self.points)
+                logging.debug("switchCard(self,card): cardIn: " + cardIn.printCard() + " switched in stead of cardOut: " + cardOut.printCard() )
                 return True
             index += 1
 
@@ -209,7 +226,9 @@ class CardSet:
         if self.hasOverlap(other) == False:
             for card in other.cards:
                 self.addCard(card)
+            logging.debug("addSet(self,other): to existing set: ",self.printSet()," added the set: ", other.printSet() )
             return True
+        logging.warning("addSet(self,other): to existing set: ",self.printSet()," could not add the set: ", other.printSet(), " sets overlap!" )
         return False
 
 class SameValueCardSet(CardSet):
@@ -286,25 +305,18 @@ class Player:
             for i in range(len(subset)):
                 if subset[i] == 11:
                     subset[i] = 1
-# following 3 lines:  test purposes only
-                print(subset[i])
-            print(".......end..of..subset.........")
-        print("...............the..end....................")
 
         cardCombinations = []
         
         candidate = Card("0")
         spare = Card("0")
 
-# first time run with just one set of talonCopy needed just for those cases when we have few combinations but also
-# cards of same value but different points to chose from
-# seemingly I deleted this 
+# if there are more than one card with the same value we put all those in sameValueCardSet
+# so that we can have all possible combinations
 
-
-        talonCopy = CardSet([Card("0")])
+        talonCopy = CardSet([Card(None)])
         talonCopy.copySet(talon)
         sameValueCards = []
-        print("set(talonCopy.values)",set(talonCopy.values))
         for value in set(talonCopy.values):
             pendingCardSet = SameValueCardSet(talonCopy.findCardByValue(value))
             pendingCardSet.printSet()
@@ -312,9 +324,10 @@ class Player:
             if pendingCardSet.numberOfCards > 1:
                 sameValueCards.append(pendingCardSet)
 
-# 2nd run with a new talon copy for each combination
-        candidate = Card("0")
-    #    spare = Card("0")
+# here we just find all the separate combinations with best cards (pointwise) new talon copy for each combination
+# later we will expand these combinations so that we get also the less valuable ones
+# because combinations can be combined in tablic
+        candidate = Card(None)
         for combination in cardValueCombinations:
             pendingCombination = []
             talonCopy.copySet(talon) 
@@ -322,19 +335,18 @@ class Player:
                 index = 0
                 for card in talonCopy.cards:
                     if value == card.value:
-                        if candidate.points <= card.points:
-                        #    spare.copyCard(candidate)
-                            candidate.copyCard(card)
-                        #    candidateIndex = index
-                        # else: 
-                        #     spare.copyCard(card)      
-                        #     spare.printCard()                 
-                    # index += 1
+                        if candidate.points < card.points:
+                            #    spare.copyCard(candidate)
+                            candidate = card.copyCard() # old: candidate.copyCard(card)
+                            logging.debug("play(self,card): candidate: " + candidate.printCard() )
 
-                pendingCombination.append(candidate)
-                # print("candidate added: ", candidate.name)
+ 
+                if candidate.name != None:
+                    pendingCombination.append(candidate)
+                    logging.debug("play(self,card): pendingCombination.append(candidate) - pendingCombination: %s", [card.printCard() for card in pendingCombination])
+
                 talonCopy.removeCard(candidate)
-                candidate = Card("0")
+                candidate = Card(None)
             newCombination = CardSet(pendingCombination)
             pendingCombination = []
 
@@ -345,7 +357,6 @@ class Player:
 
             if combinationAlreadyExists == False:
                 cardCombinations.append(newCombination)  
-
 
         addedCombination = True
         while addedCombination == True:
@@ -364,14 +375,11 @@ class Player:
                                     newCombination.switchCard(card,valueSetCard)
                                     if newCombination.sameAs(combination) == False:
                                         # here need to check if the combination is already in cardCombinations 
-                                        if newCombination not in cardCombinations:
+                                        if newCombination.isSetInListOfSets(cardCombinations) == False:
                                             cardCombinations.append(newCombination)
                                             addedCombination = True
-
-        # for combination in cardCombinations:
-        #     for sameValueSet in sameValueCards:
-        #         overlap = combination.hasOverlap(sameValueSet)
-                
+                                            logging.debug("play(self,card) - if newCombination not in cardCombinations - newCombination:", newCombination.printSet())
+              
 
         print("Card combinations initial:")        
         for setOfCards in cardCombinations:
@@ -446,8 +454,3 @@ class Player:
 
         self.printStatus()
 
-        # test purposes only
-    #    print("talon u play():\n..............")
-        # for c in talon:
-        #     c.printCard()
-    #    talon.printSet()
