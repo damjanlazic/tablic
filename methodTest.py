@@ -39,7 +39,7 @@ def loggingTest():
 
 
 def main():
-    # printTest()
+    printTest()
     loggingTest()
 
 main()
