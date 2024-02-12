@@ -1,7 +1,6 @@
-#greska : 1 beskonacna petlja u logici koja poziva addSet metod 
-#greska : 2 negde set od dva keca priznaje kao kombinaciju za kralja - ispitati
 
-#nova greska : line 250 sad kad sam sklonio upotrebu promenljivih value i name iz klase SameValueCardSet vise nema beskonacnu petlju ali ne radi kako treba kreira karte tipa None to treba regulisati 
+#greska : 2 negde set od dva keca priznaje kao kombinaciju za kralja - ispitati
+#greska : sad nosi sve zivo i kad treba i kad ne treba Jh nosi sve, a treba da ostane cetvorka
 
 from itertools import combinations
 from copy import deepcopy
@@ -13,13 +12,13 @@ logging.basicConfig(filename='tablicLog.log', filemode='w', level=logging.DEBUG,
 # in format to add time: %(asctime)s
 
 class Card:
-    def __init__(self, name) -> None:
-        self.name = name
+    def __init__(self, name=None) -> None:
+        self.name = name if name else None
         self.value, self.points = self.assignPointsValue()
         logging.debug("Card object created name = {}, value = {}, points = {}".format(self.name,self.value,self.points))
     
     def assignPointsValue(self):
-        if self.name == "None":
+        if self.name == None:
             points = -1
             value = -1
         else:
@@ -103,7 +102,10 @@ class CardSet:
     def printSet(self): # prints the set so that each column contains name, value, points
         printString = ""
         for n in self.names:
-            printString += n + "\t" # print(n,end = "\t")
+            if n == None:
+                printString += "None\t"
+            else:
+                printString += n + "\t" # print(n,end = "\t")
         printString += "\n" # print()
         for v in self.values:
             printString += str(v) + "\t" # print(v,end = "\t")
@@ -144,9 +146,8 @@ class CardSet:
         return False
 
     def isCardInSet(self,card): # checks if single card is in a Set (used in addCard() which is used in addSet())
-        if card.name == None:
-            logging.warning("isCardInSet, set: {};\t card: {} returns false - tried to check for card of value None".format(' '.join([name for name in self.names]),card.name))
-
+        if card is None:
+            logging.warning("isCardInSet, set: {};\t card: None returns false - tried to check for card of type None".format(' '.join([name for name in self.names])))
             return False
         for name in self.names:
             if name == card.name:
@@ -164,6 +165,10 @@ class CardSet:
 
    
     def hasOverlap(self,other): # checks if two Sets overlap and returns True or False 
+        if self is None or other is None or not self.cards or not other.cards:
+            logging.warning("hasOverlap, set1: {};\t set2: {} returns true because one set is None".format(' '.join([name for name in self.names]),' '.join([name for name in other.names])))
+            return True # returning true since one set is None and we don't want to deal with it
+        else:
             for name in other.names:
                 if name in self.names:
                     return True
@@ -187,6 +192,10 @@ class CardSet:
     def addCard(self,card): # if card is already in Set returns False (no card added), otherwise it adds the card to Set and retruns True
         if self.isCardInSet(card) == True:
             return False # no card added
+        if self.isCardInSet(None):
+            for anyCard in self.cards:
+                if anyCard.name == None:
+                    self.removeCard(None)
         self.cards.append(card)
         self.names.append(card.name)
         self.values.append(card.value)
@@ -236,19 +245,26 @@ class CardSet:
 
 
     def addSet(self,other): # adds the other Set only if there is no overlap (returns True or False whether added or not)
-        if self.hasOverlap(other) == False:
-            for card in other.cards:
-                self.addCard(card)
-            logging.debug("addSet(self,other): to existing set: " + self.printSet() + " added the set: " + other.printSet() )
-            return True
-        logging.warning("addSet(self,other): to existing set: " + self.printSet() + " could not add the set: " + other.printSet() + " sets overlap!" )
-        return False
+        if self is not None and other is not None:
+            if self.hasOverlap(other) == False:
+                if other.cards:  # Check if the 'other' set is not empty
+                    for card in other.cards:
+                        self.addCard(card)
+                    logging.debug("addSet(self,other): to existing set: " + self.printSet() + " added the set: " + other.printSet() )
+                    return True
+                else:
+                    logging.warning("addSet(self, other): to existing set: " + self.printSet() + " could not add the set: " + other.printSet() + " 'other' set is empty!")
+                logging.warning("addSet(self,other): to existing set: " + self.printSet() + " could not add the set: " + other.printSet() + " sets overlap!" )
+                return False
+        else:
+            logging.warning("addSet(self,other): to existing set: " + self.printSet() + " could not add the set: " + other.printSet() + " One set is None!" )
+            return False        
 
 class SameValueCardSet(CardSet):
     def __init__(self, cards) -> None:
         super().__init__(cards)
-        self.value = self.values[0] # if self.values else None # self.value = cards[0].value
-        self.numberOfCards = len(self.values)
+        self.value = cards[0] if cards else None # self.values[0] # if self.values else None # self.value = cards[0].value
+        self.numberOfCards = len(cards) if cards else None
     def printSet(self):
         printString = ""
         # if self.value is None:
@@ -261,11 +277,11 @@ class SameValueCardSet(CardSet):
         return printString
 
 class Player:
-    talon = CardSet([Card("None")])
+    talon = CardSet([Card()])
 
     def __init__(self,name) -> None:
         self.name = name
-        self.hand = CardSet([Card("None") for i in range(6)]) # cards currently in hand / try to initialize it as empty list, than it is supposed to be a list of Card objects
+        self.hand = None # CardSet([Card("None") for i in range(6)]) # cards currently in hand / try to initialize it as empty list, than it is supposed to be a list of Card objects
         self.points = 0 # points won by the player during the game, table + shtihovi (T-K+2c) are updated during the game 
         self.taken = 0 # total number of cards won/taken by the player in the end compares with player no2 and +3 points added to the one with larger number of cards taken 
         self.newPoints = 0
@@ -352,7 +368,7 @@ class Player:
 # here we just find all the separate combinations with best cards (pointwise) new talon copy for each combination
 # later we will expand these combinations so that we get also the less valuable ones
 # because combinations can be combined in tablic
-        candidate = Card("None")
+        candidate = Card()
         for combination in cardValueCombinations:
             pendingCombination = []
             # talonCopy.copySet(talon)
@@ -369,7 +385,7 @@ class Player:
                     pendingCombination.append(candidate)
                     logging.debug("play(self,card): pendingCombination.append(candidate) - pendingCombination: %s", [card.printCard() for card in pendingCombination])
                     talonCopy.removeCard(candidate)
-                    candidate = Card("None")
+                    candidate = Card()
 
             newCombination = CardSet(pendingCombination)
             pendingCombination = []
