@@ -41,12 +41,17 @@ class Card:
                     case 'D':
                         value = 13
                         points = 1
+                    case 'Q':
+                        value = 13
+                        points = 1
                     case 'K':
                         value = 14
                         points = 1
                     case 'A':
                         value = 1
                         points = 1
+                    case _ :
+                        print("Invalid Card Name!!!", self.name)
         return value, points
             
     def sameAs(self, other):
