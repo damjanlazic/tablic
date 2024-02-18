@@ -281,10 +281,10 @@ class Player:
     def printHand(self):
         print("Player: ", self.name, "\nCards in hand: ") #, end = "\t")
         print(self.hand.printSet()) 
-        print("\n...............")
+        print("..........................................\n")
 
     def printStatus(self):
-        print("player: ", self.name, "\nnew cards taken: ",self.newTaken,"\nnew points collected: ",self.newPoints,"\n", "\ntotal cards taken: ",self.taken,"\ntotal points: ",self.points,"\n")
+        print("\nplayer: ", self.name, "\nnew cards taken: ",self.newTaken,"\nnew points collected: ",self.newPoints,"\n", "\ntotal cards taken: ",self.taken,"\ntotal points: ",self.points,"\n..........................")
         
 
     def play(self,turnCount): 
@@ -324,13 +324,22 @@ class Player:
             doAgain = False
             if cardPlayed.value == 1 :
                 cardPlayed.value = 11
-                doAgain = True
+                for i in range(len(talonValues)):
+                    if talonValues[i] == 11:
+                        talonValues[i] = 1
 
+                doAgain = True
+# greska? ispitati da li ovo treba da bude pod doAgain petljom i cemu uopste sluzi ako ne? - mozda je samo za logging
         for subset in cardValueCombinations:
             for i in range(len(subset)):
                 if subset[i] == 11:
                     subset[i] = 1
         logging.debug("CardValueCombinations for the thrown card: {}, with the available talon:{} are: {}".format(cardPlayed.name,[x for x in Player.talon.names],[i for i in cardValueCombinations]))
+
+        # if Ace was thrown in case it stayed on talon we reset its value back to 1
+        if cardPlayed.value == 11 :
+            cardPlayed.value = 1
+
         cardCombinations = []
         
  
@@ -443,10 +452,34 @@ class Player:
 
         else:
             Player.talon.addCard(cardPlayed)
-            self.newPoints = 0
-            self.newTaken = 0
+
         self.points += self.newPoints
         self.taken += self.newTaken
-
         self.printStatus()
+        self.newPoints = 0
+        self.newTaken = 0
+
+    @classmethod
+    def settleScore(cls, players: list):
+        remainingCards = 0
+        for name in Player.talon.names:
+            remainingCards +=1
+        if players[1].lastTakenInTurn >= players[0].lastTakenInTurn:
+            players[1].points += Player.talon.totalPoints
+            players[1].taken += remainingCards
+        else:
+            players[0].points += Player.talon.totalPoints
+            players[0].taken += remainingCards
+        if players[0].taken > players[1].taken:
+            players[0].points += 3
+        elif players[0].taken < players[1].taken:
+            players[1].points += 3    
+        if players[0].points > players[1].points :
+            winner = players[0]
+        elif players[1].points > players[0].points:
+            winner = players[1]
+        else:
+            winner = None
+        return winner
+       
 
