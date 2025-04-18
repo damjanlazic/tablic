@@ -73,15 +73,37 @@ class Card:
 class CardSet:
     def __init__(self, cards) -> None:
         self.cards = cards if cards else [] # [card for card in cards] #  
-        self.names = [card.name for card in cards]
-        self.values = [card.value for card in cards]
-        self.points = [card.points for card in cards]
+        self.names = [card.name for card in cards] if cards else [None]
+        self.values = [card.value for card in cards] if cards else [-1]
+        self.points = [card.points for card in cards] if cards else [-1]
         # try:
         self.totalPoints = sum(self.points)
         logging.debug("CardSet __init__\n" + self.printSet())
         if -1 in self.points:
             logging.warning("CardSet init - set with card(s) of None type created!")
 
+    def findMinValueCard(self):
+        minValue = 100
+        for card in self.cards:
+            if card.value < minValue and card.name != "2c" and "A" not in card.name:
+                minValue = card.value
+                minValueCard = card
+        if minValue == 100:
+            if "2c" in self.names:
+                minValueCard = Card("2c")
+            else:
+                minValueCard = self.cards[0]
+        logging.debug("findMinValueCard(self): of cards in hand: {} ... => minValueCard: {}".format([card.printCard() for card in self.cards], minValueCard.printCard()))
+        return minValueCard
+# treba resitproveriti da li ovo gore resava problem keca i male dvojke
+    
+    # def findMinPoints(self):
+    #     minPoints = 100
+    #     for card in self.cards:
+    #         if card.points < minPoints:
+    #             minPoints = card.points
+    #     return minPoints
+    
 
     def copySet(self): # -> CardSet:
         cards = [Card(name) for name in self.names]
@@ -191,6 +213,8 @@ class CardSet:
         self.totalPoints += card.points
         return True # card added
     def removeCard(self, card):
+        if card is None:
+            return False
         index = 0
         for name in self.names:
             if name == card.name:
@@ -287,14 +311,8 @@ class Player:
         print("\nplayer: ", self.name, "\nnew cards taken: ",self.newTaken,"\nnew points collected: ",self.newPoints,"\n", "\ntotal cards taken: ",self.taken,"\ntotal points: ",self.points,"\n..........................")
         
 
-    def play(self,turnCount): 
-        cardName = " "
-        self.printHand()
-        while cardName not in self.hand.names: 
-            cardName = input("Pick a card to throw: ")
-        cardPlayed = Card(cardName)
-        self.hand.removeCard(cardPlayed)
-
+    @staticmethod
+    def getCardCombinations(cardPlayed):
         talonValues = []
         cardValueCombinations = []
         for v in Player.talon.values:
@@ -334,7 +352,7 @@ class Player:
             for i in range(len(subset)):
                 if subset[i] == 11:
                     subset[i] = 1
-        logging.debug("CardValueCombinations for the thrown card: {}, with the available talon:{} are: {}".format(cardPlayed.name,[x for x in Player.talon.names],[i for i in cardValueCombinations]))
+        logging.debug("getCardCombinations: CardValueCombinations for the thrown card: {}, with the available talon:{} are: {}".format(cardPlayed.name,[x for x in Player.talon.names],[i for i in cardValueCombinations]))
 
         # if Ace was thrown in case it stayed on talon we reset its value back to 1
         if cardPlayed.value == 11 :
@@ -374,7 +392,7 @@ class Player:
  
                 if candidate.name != None:
                     pendingCombination.append(candidate)
-                    logging.debug("play(self,card): pendingCombination.append(candidate) - pendingCombination: %s", [card.printCard() for card in pendingCombination])
+                    logging.debug("getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: %s", [card.printCard() for card in pendingCombination])
                     talonCopy.removeCard(candidate)
                     candidate = Card()
 
@@ -406,7 +424,7 @@ class Player:
                                         if newCombFromSameValueCards.isSetInListOfSets(cardCombinations) == False:
                                             cardCombinations.append(newCombFromSameValueCards)
                                             addedCombination = True
-                                            logging.debug("play(self,card) - if newCombFromSameValueCards not in cardCombinations - newCombFromSameValueCards: %s", newCombFromSameValueCards.printSet())
+                                            logging.debug("getCardCombinations(cardPlayed) - if newCombFromSameValueCards not in cardCombinations - newCombFromSameValueCards: %s", newCombFromSameValueCards.printSet())
               
 
         combinationJoined = True
@@ -417,8 +435,11 @@ class Player:
                     if cardCombinations[index1].hasOverlap(cardCombinations[index2]) == False:
                         cardCombinations[index1].addSet(cardCombinations[index2])
                         combinationJoined = True
-
-
+        logging.debug("getCardCombinations(cardPlayed): final cardCombinations: %s", [cardCombination.printSet() for cardCombination in cardCombinations])
+        return cardCombinations
+    
+    @staticmethod
+    def evaluate_card(cardCombinations):
         if len(cardCombinations) > 0:
             bestSet = CardSet([card for card in cardCombinations[0].cards]) 
             takenAcard = True
@@ -430,9 +451,26 @@ class Player:
                     if len(bestSet.names) < len(setOfCards.names):
                         # bestSet.copySet(setOfCards)
                         bestSet = setOfCards.copySet()
+            logging.debug("evaluate_card(cardCombinations): bestSet: %s", bestSet.printSet())
+            logging.debug("evaluate_card(cardCombinations): takenAcard: %s", takenAcard)
         else:
-            logging.debug("play(self,card) - takenACard = False")
+            logging.debug("evaluate_card(cardCombinations): takenACard = False")
             takenAcard = False
+            bestSet = None
+        logging.debug("evaluate_card(cardCombinations): bestSet: None")
+        logging.debug("evaluate_card(cardCombinations): takenAcard: %s", takenAcard)
+        return bestSet, takenAcard
+    
+    def play(self, turnCount): 
+        cardName = " "
+        self.printHand()
+        while cardName not in self.hand.names: 
+            cardName = input("Pick a card to throw: ")
+        cardPlayed = Card(cardName)
+        self.hand.removeCard(cardPlayed)
+
+        
+        bestSet, takenAcard = self.evaluate_card(self.getCardCombinations(cardPlayed))
         
         if takenAcard == True:
             # add the card that player played with
@@ -458,6 +496,7 @@ class Player:
         self.printStatus()
         self.newPoints = 0
         self.newTaken = 0
+
 
     @classmethod
     def settleScore(cls, players: list):

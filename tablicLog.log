@@ -5,61 +5,1519 @@ None
 -1	
 total points: -1 - 81
 root - WARNING - CardSet init - set with card(s) of None type created! - 83
-root - DEBUG - Card object created name = 8s, value = 8, points = 0 - 17
-root - DEBUG - Card object created name = Tc, value = 10, points = 1 - 17
-root - DEBUG - Card object created name = 2h, value = 2, points = 0 - 17
-root - DEBUG - Card object created name = 6c, value = 6, points = 0 - 17
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - Card object created name = 9c, value = 9, points = 0 - 17
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
 root - DEBUG - CardSet __init__
-8s	Tc	2h	6c	
-8	10	2	6	
-0	1	0	0	
+9s	9c	8h	Kd	
+9	9	8	14	
+0	0	0	1	
 total points: 1 - 81
-root - DEBUG - Card object created name = 4h, value = 4, points = 0 - 17
-root - DEBUG - Card object created name = 7d, value = 7, points = 0 - 17
-root - DEBUG - Card object created name = Dc, value = 13, points = 1 - 17
-root - DEBUG - Card object created name = Ts, value = 10, points = 1 - 17
-root - DEBUG - Card object created name = Jh, value = 12, points = 1 - 17
-root - DEBUG - Card object created name = Ad, value = 1, points = 1 - 17
-root - DEBUG - CardSet __init__
-4h	7d	Dc	Ts	Jh	Ad	
-4	7	13	10	12	1	
-0	0	1	1	1	1	
-total points: 4 - 81
-root - DEBUG - Card object created name = 8c, value = 8, points = 0 - 17
-root - DEBUG - Card object created name = Jc, value = 12, points = 1 - 17
-root - DEBUG - Card object created name = Ac, value = 1, points = 1 - 17
-root - DEBUG - Card object created name = 3h, value = 3, points = 0 - 17
-root - DEBUG - Card object created name = 6h, value = 6, points = 0 - 17
-root - DEBUG - Card object created name = Dh, value = 13, points = 1 - 17
-root - DEBUG - CardSet __init__
-8c	Jc	Ac	3h	6h	Dh	
-8	12	1	3	6	13	
-0	1	1	0	0	1	
-total points: 3 - 81
-root - DEBUG - Card object created name = Ts, value = 10, points = 1 - 17
-root - DEBUG - CardSet.removeCard(self,card): Ts | 10 | 1 Card removed! - 203
-root - DEBUG - CardValueCombinations for the thrown card: Ts, with the available talon:['8s', 'Tc', '2h', '6c'] are: [[10], [8, 2]] - 337
-root - DEBUG - Card object created name = 8s, value = 8, points = 0 - 17
-root - DEBUG - Card object created name = Tc, value = 10, points = 1 - 17
+root - DEBUG - Card object created name = 9d, value = 9, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - Card object created name = 7h, value = 7, points = 0 - 17
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
 root - DEBUG - Card object created name = 2h, value = 2, points = 0 - 17
-root - DEBUG - Card object created name = 6c, value = 6, points = 0 - 17
+root - DEBUG - Card object created name = Ac, value = 1, points = 1 - 17
 root - DEBUG - CardSet __init__
-8s	Tc	2h	6c	
-8	10	2	6	
-0	1	0	0	
+9d	3d	7h	As	2h	Ac	
+9	3	7	1	2	1	
+0	0	0	1	0	1	
+total points: 2 - 81
+root - DEBUG - Card object created name = Td, value = 10, points = 2 - 17
+root - DEBUG - Card object created name = Js, value = 12, points = 1 - 17
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - Card object created name = Ah, value = 1, points = 1 - 17
+root - DEBUG - Card object created name = Kc, value = 14, points = 1 - 17
+root - DEBUG - Card object created name = Dc, value = 13, points = 1 - 17
+root - DEBUG - CardSet __init__
+Td	Js	3c	Ah	Kc	Dc	
+10	12	3	1	14	13	
+2	1	0	1	1	1	
+total points: 6 - 81
+root - DEBUG - Card object created name = 9d, value = 9, points = 0 - 17
+root - DEBUG - CardSet.removeCard(self,card): 9d | 9 | 0 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: 9d, with the available talon:['9s', '9c', '8h', 'Kd'] are: [[9], [9]] - 355
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - Card object created name = 9c, value = 9, points = 0 - 17
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+9s	9c	8h	Kd	
+9	9	8	14	
+0	0	0	1	
 total points: 1 - 81
 root - DEBUG - CardSet __init__
 Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
-8s	
+8h	
 8	
 0	
 total points: 0 - 81
 root - DEBUG - CardSet __init__
-Veliko masno debelo!Same card set of cards with value: 10Number of cards is : 1
-Tc	
-10	
+Veliko masno debelo!Same card set of cards with value: 9Number of cards is : 2
+9s	9c	
+9	9	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 14Number of cards is : 1
+Kd	
+14	
 1	
 total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - Card object created name = 9c, value = 9, points = 0 - 17
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+9s	9c	8h	Kd	
+9	9	8	14	
+0	0	0	1	
+total points: 1 - 81
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 9s | 9 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['9s | 9 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 9s | 9 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+9s	
+9	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - Card object created name = 9c, value = 9, points = 0 - 17
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+9s	9c	8h	Kd	
+9	9	8	14	
+0	0	0	1	
+total points: 1 - 81
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 9s | 9 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['9s | 9 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 9s | 9 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+9s	
+9	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9s - 132
+root - DEBUG - ...other:	 9s - 133
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - DEBUG - ...CardSet.sameAs(self,other) returns: True - 148
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - CardSet __init__
+9s	
+9	
+0	
+total points: 0 - 81
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - WARNING - switchCard(self,card): 9s | 9 | 0 No card added one of the two cards to be switched is already in set - 244
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9s - 132
+root - DEBUG - ...other:	 9s - 133
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - DEBUG - ...CardSet.sameAs(self,other) returns: True - 148
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - CardSet __init__
+9s	
+9	
+0	
+total points: 0 - 81
+root - DEBUG - isCardInSet, set: 9s;	 card: 9c returns false - 166
+root - DEBUG - Card.sameAs(self,other) 
+ ...self: name = 9s, value = 9, points = 0
+ ...other: name = 9s, value = 9, points = 0 - 60
+root - DEBUG - Card.sameAs(self,other) returns: True - 61
+root - DEBUG - Card object created name = 9c, value = 9, points = 0 - 17
+root - DEBUG - switchCard(self,card): cardIn: 9c | 9 | 0 switched in stead of cardOut: 9s | 9 | 0 - 254
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9c - 132
+root - DEBUG - ...other:	 9s - 133
+root - DEBUG - isCardInSet, set: 9c;	 card: 9s returns false - 166
+root - DEBUG - ...other has card that self has not, card: 9s returns false - 142
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9c - 132
+root - DEBUG - ...other:	 9s - 133
+root - DEBUG - isCardInSet, set: 9c;	 card: 9s returns false - 166
+root - DEBUG - ...other has card that self has not, card: 9s returns false - 142
+root - DEBUG - getCardCombinations(cardPlayed) - if newCombFromSameValueCards not in cardCombinations - newCombFromSameValueCards: 9c	
+9	
+0	
+total points: 0 - 427
+root - DEBUG - Card object created name = 9c, value = 9, points = 0 - 17
+root - DEBUG - CardSet __init__
+9c	
+9	
+0	
+total points: 0 - 81
+root - DEBUG - isCardInSet, set: 9c;	 card: 9s returns false - 166
+root - DEBUG - Card.sameAs(self,other) 
+ ...self: name = 9c, value = 9, points = 0
+ ...other: name = 9c, value = 9, points = 0 - 60
+root - DEBUG - Card.sameAs(self,other) returns: True - 61
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - switchCard(self,card): cardIn: 9s | 9 | 0 switched in stead of cardOut: 9c | 9 | 0 - 254
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9s - 132
+root - DEBUG - ...other:	 9c - 133
+root - DEBUG - isCardInSet, set: 9s;	 card: 9c returns false - 166
+root - DEBUG - ...other has card that self has not, card: 9c returns false - 142
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9s - 132
+root - DEBUG - ...other:	 9s - 133
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - DEBUG - ...CardSet.sameAs(self,other) returns: True - 148
+root - DEBUG - Card object created name = 9c, value = 9, points = 0 - 17
+root - DEBUG - CardSet __init__
+9c	
+9	
+0	
+total points: 0 - 81
+root - DEBUG - isCardInSet, set: 9c;	 card: 9c returns true - 164
+root - WARNING - switchCard(self,card): 9c | 9 | 0 No card added one of the two cards to be switched is already in set - 244
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9c - 132
+root - DEBUG - ...other:	 9c - 133
+root - DEBUG - isCardInSet, set: 9c;	 card: 9c returns true - 164
+root - DEBUG - isCardInSet, set: 9c;	 card: 9c returns true - 164
+root - DEBUG - ...CardSet.sameAs(self,other) returns: True - 148
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - CardSet __init__
+9s	
+9	
+0	
+total points: 0 - 81
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - WARNING - switchCard(self,card): 9s | 9 | 0 No card added one of the two cards to be switched is already in set - 244
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9s - 132
+root - DEBUG - ...other:	 9s - 133
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - DEBUG - ...CardSet.sameAs(self,other) returns: True - 148
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - CardSet __init__
+9s	
+9	
+0	
+total points: 0 - 81
+root - DEBUG - isCardInSet, set: 9s;	 card: 9c returns false - 166
+root - DEBUG - Card.sameAs(self,other) 
+ ...self: name = 9s, value = 9, points = 0
+ ...other: name = 9s, value = 9, points = 0 - 60
+root - DEBUG - Card.sameAs(self,other) returns: True - 61
+root - DEBUG - Card object created name = 9c, value = 9, points = 0 - 17
+root - DEBUG - switchCard(self,card): cardIn: 9c | 9 | 0 switched in stead of cardOut: 9s | 9 | 0 - 254
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9c - 132
+root - DEBUG - ...other:	 9s - 133
+root - DEBUG - isCardInSet, set: 9c;	 card: 9s returns false - 166
+root - DEBUG - ...other has card that self has not, card: 9s returns false - 142
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9c - 132
+root - DEBUG - ...other:	 9s - 133
+root - DEBUG - isCardInSet, set: 9c;	 card: 9s returns false - 166
+root - DEBUG - ...other has card that self has not, card: 9s returns false - 142
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9c - 132
+root - DEBUG - ...other:	 9c - 133
+root - DEBUG - isCardInSet, set: 9c;	 card: 9c returns true - 164
+root - DEBUG - isCardInSet, set: 9c;	 card: 9c returns true - 164
+root - DEBUG - ...CardSet.sameAs(self,other) returns: True - 148
+root - DEBUG - Card object created name = 9c, value = 9, points = 0 - 17
+root - DEBUG - CardSet __init__
+9c	
+9	
+0	
+total points: 0 - 81
+root - DEBUG - isCardInSet, set: 9c;	 card: 9s returns false - 166
+root - DEBUG - Card.sameAs(self,other) 
+ ...self: name = 9c, value = 9, points = 0
+ ...other: name = 9c, value = 9, points = 0 - 60
+root - DEBUG - Card.sameAs(self,other) returns: True - 61
+root - DEBUG - Card object created name = 9s, value = 9, points = 0 - 17
+root - DEBUG - switchCard(self,card): cardIn: 9s | 9 | 0 switched in stead of cardOut: 9c | 9 | 0 - 254
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9s - 132
+root - DEBUG - ...other:	 9c - 133
+root - DEBUG - isCardInSet, set: 9s;	 card: 9c returns false - 166
+root - DEBUG - ...other has card that self has not, card: 9c returns false - 142
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9s - 132
+root - DEBUG - ...other:	 9s - 133
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - DEBUG - isCardInSet, set: 9s;	 card: 9s returns true - 164
+root - DEBUG - ...CardSet.sameAs(self,other) returns: True - 148
+root - DEBUG - Card object created name = 9c, value = 9, points = 0 - 17
+root - DEBUG - CardSet __init__
+9c	
+9	
+0	
+total points: 0 - 81
+root - DEBUG - isCardInSet, set: 9c;	 card: 9c returns true - 164
+root - WARNING - switchCard(self,card): 9c | 9 | 0 No card added one of the two cards to be switched is already in set - 244
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 9c - 132
+root - DEBUG - ...other:	 9c - 133
+root - DEBUG - isCardInSet, set: 9c;	 card: 9c returns true - 164
+root - DEBUG - isCardInSet, set: 9c;	 card: 9c returns true - 164
+root - DEBUG - ...CardSet.sameAs(self,other) returns: True - 148
+root - DEBUG - hasOverlap, set1: 9s;	 set2: 9c returns false - 185
+root - DEBUG - hasOverlap, set1: 9s;	 set2: 9c returns false - 185
+root - DEBUG - isCardInSet, set: 9s;	 card: 9c returns false - 166
+root - WARNING - isCardInSet, set: 9s;	 card: None returns false - tried to check for card of type None - 160
+root - DEBUG - addSet(self,other): to existing set: 9s	9c	
+9	9	
+0	0	
+total points: 0 added the set: 9c	
+9	
+0	
+total points: 0 - 265
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: ['9s\t9c\t\n9\t9\t\n0\t0\t\ntotal points: 0', '9c\t\n9\t\n0\t\ntotal points: 0'] - 438
+root - DEBUG - CardSet __init__
+9s	9c	
+9	9	
+0	0	
+total points: 0 - 81
+root - DEBUG - evaluate_card(cardCombinations): bestSet: 9s	9c	
+9	9	
+0	0	
+total points: 0 - 454
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 455
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 461
+root - DEBUG - CardSet.removeCard(self,card): 9s | 9 | 0 Card removed! - 227
+root - DEBUG - CardSet.removeCard(self,card): 9c | 9 | 0 Card removed! - 227
+root - DEBUG - CardSet __init__
+None	
+-1	
+-1	
+total points: -1 - 81
+root - WARNING - CardSet init - set with card(s) of None type created! - 83
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Td, with the available talon:['8h', 'Kd'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+8h	Kd	
+8	14	
+0	1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 14Number of cards is : 1
+Kd	
+14	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Js, with the available talon:['8h', 'Kd'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+8h	Kd	
+8	14	
+0	1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 14Number of cards is : 1
+Kd	
+14	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: 3c, with the available talon:['8h', 'Kd'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+8h	Kd	
+8	14	
+0	1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 14Number of cards is : 1
+Kd	
+14	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Ah, with the available talon:['8h', 'Kd'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+8h	Kd	
+8	14	
+0	1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 14Number of cards is : 1
+Kd	
+14	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Kc, with the available talon:['8h', 'Kd'] are: [[14]] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+8h	Kd	
+8	14	
+0	1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 14Number of cards is : 1
+Kd	
+14	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+8h	Kd	
+8	14	
+0	1	
+total points: 1 - 81
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - play(self,card): candidate: Kd | 14 | 1 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['Kd | 14 | 1'] - 395
+root - DEBUG - CardSet.removeCard(self,card): Kd | 14 | 1 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+Kd	
+14	
+1	
+total points: 1 - 81
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: ['Kd\t\n14\t\n1\t\ntotal points: 1'] - 438
+root - DEBUG - CardSet __init__
+Kd	
+14	
+1	
+total points: 1 - 81
+root - DEBUG - evaluate_card(cardCombinations): bestSet: Kd	
+14	
+1	
+total points: 1 - 454
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 455
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 461
+root - DEBUG - pickCard(self): if bestSet is not None and bestSet.totalPoints > theBestSet.totalPoints: ['Kd | 14 | 1'] 
+The best card: Kc | 14 | 1 - 20
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Dc, with the available talon:['8h', 'Kd'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+8h	Kd	
+8	14	
+0	1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 14Number of cards is : 1
+Kd	
+14	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - pickCard(self): theBestCard: Kc | 14 | 1 - 33
+root - DEBUG - CardSet.removeCard(self,card): Kc | 14 | 1 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Kc, with the available talon:['8h', 'Kd'] are: [[14]] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+8h	Kd	
+8	14	
+0	1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 14Number of cards is : 1
+Kd	
+14	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - CardSet __init__
+8h	Kd	
+8	14	
+0	1	
+total points: 1 - 81
+root - DEBUG - Card object created name = Kd, value = 14, points = 1 - 17
+root - DEBUG - play(self,card): candidate: Kd | 14 | 1 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['Kd | 14 | 1'] - 395
+root - DEBUG - CardSet.removeCard(self,card): Kd | 14 | 1 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+Kd	
+14	
+1	
+total points: 1 - 81
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: ['Kd\t\n14\t\n1\t\ntotal points: 1'] - 438
+root - DEBUG - CardSet __init__
+Kd	
+14	
+1	
+total points: 1 - 81
+root - DEBUG - evaluate_card(cardCombinations): bestSet: Kd	
+14	
+1	
+total points: 1 - 454
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 455
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 461
+root - DEBUG - CardSet.removeCard(self,card): Kd | 14 | 1 Card removed! - 227
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet.removeCard(self,card): 3d | 3 | 0 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: 3d, with the available talon:['8h'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - isCardInSet, set: 8h;	 card: 3d returns false - 166
+root - WARNING - isCardInSet, set: 8h;	 card: None returns false - tried to check for card of type None - 160
+root - DEBUG - CardSet __init__
+None	
+-1	
+-1	
+total points: -1 - 81
+root - WARNING - CardSet init - set with card(s) of None type created! - 83
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Td, with the available talon:['8h', '3d'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Js, with the available talon:['8h', '3d'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: 3c, with the available talon:['8h', '3d'] are: [[3]] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 3d | 3 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['3d | 3 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 3d | 3 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: ['3d\t\n3\t\n0\t\ntotal points: 0'] - 438
+root - DEBUG - CardSet __init__
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - evaluate_card(cardCombinations): bestSet: 3d	
+3	
+0	
+total points: 0 - 454
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 455
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 461
+root - DEBUG - pickCard(self): if bestSet is not None and bestSet.totalPoints > theBestSet.totalPoints: ['3d | 3 | 0'] 
+The best card: 3c | 3 | 0 - 20
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Ah, with the available talon:['8h', '3d'] are: [[8, 3]] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 8h | 8 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['8h | 8 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 8h | 8 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 3d | 3 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['8h | 8 | 0', '3d | 3 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 3d | 3 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: ['8h\t3d\t\n8\t3\t\n0\t0\t\ntotal points: 0'] - 438
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - evaluate_card(cardCombinations): bestSet: 8h	3d	
+8	3	
+0	0	
+total points: 0 - 454
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 455
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Dc, with the available talon:['8h', '3d'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Td, with the available talon:['8h', '3d'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Js, with the available talon:['8h', '3d'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: 3c, with the available talon:['8h', '3d'] are: [[3]] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 3d | 3 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['3d | 3 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 3d | 3 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: ['3d\t\n3\t\n0\t\ntotal points: 0'] - 438
+root - DEBUG - CardSet __init__
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - evaluate_card(cardCombinations): bestSet: 3d	
+3	
+0	
+total points: 0 - 454
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 455
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Ah, with the available talon:['8h', '3d'] are: [[8, 3]] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 8h | 8 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['8h | 8 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 8h | 8 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 3d | 3 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['8h | 8 | 0', '3d | 3 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 3d | 3 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: ['8h\t3d\t\n8\t3\t\n0\t0\t\ntotal points: 0'] - 438
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - evaluate_card(cardCombinations): bestSet: 8h	3d	
+8	3	
+0	0	
+total points: 0 - 454
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 455
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Dc, with the available talon:['8h', '3d'] are: [] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - pickCard(self): theBestCard: Ah | 1 | 1 - 33
+root - DEBUG - CardSet.removeCard(self,card): Ah | 1 | 1 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Ah, with the available talon:['8h', '3d'] are: [[8, 3]] - 355
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 8Number of cards is : 1
+8h	
+8	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3d	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - Card object created name = 8h, value = 8, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 8h | 8 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['8h | 8 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 8h | 8 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 3d, value = 3, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 3d | 3 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['8h | 8 | 0', '3d | 3 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 3d | 3 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: ['8h\t3d\t\n8\t3\t\n0\t0\t\ntotal points: 0'] - 438
+root - DEBUG - CardSet __init__
+8h	3d	
+8	3	
+0	0	
+total points: 0 - 81
+root - DEBUG - evaluate_card(cardCombinations): bestSet: 8h	3d	
+8	3	
+0	0	
+total points: 0 - 454
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 455
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 461
+root - DEBUG - CardSet.removeCard(self,card): 8h | 8 | 0 Card removed! - 227
+root - DEBUG - CardSet.removeCard(self,card): 3d | 3 | 0 Card removed! - 227
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
+root - DEBUG - CardSet.removeCard(self,card): As | 1 | 1 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: As, with the available talon:[] are: [] - 355
+root - DEBUG - CardSet __init__
+None	
+-1	
+-1	
+total points: -1 - 81
+root - WARNING - CardSet init - set with card(s) of None type created! - 83
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: -1Number of cards is : 1
+None	
+-1	
+-1	
+total points: -1 - 81
+root - WARNING - CardSet init - set with card(s) of None type created! - 83
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - isCardInSet, set: ;	 card: As returns false - 166
+root - WARNING - isCardInSet, set: ;	 card: None returns false - tried to check for card of type None - 160
+root - DEBUG - CardSet __init__
+None	
+-1	
+-1	
+total points: -1 - 81
+root - WARNING - CardSet init - set with card(s) of None type created! - 83
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Td, with the available talon:['As'] are: [] - 355
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
+root - DEBUG - CardSet __init__
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 1Number of cards is : 1
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Js, with the available talon:['As'] are: [] - 355
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
+root - DEBUG - CardSet __init__
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 1Number of cards is : 1
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: 3c, with the available talon:['As'] are: [] - 355
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
+root - DEBUG - CardSet __init__
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 1Number of cards is : 1
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Dc, with the available talon:['As'] are: [] - 355
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
+root - DEBUG - CardSet __init__
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 1Number of cards is : 1
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - pickCard(self): theBestSet is CardSet(None) - No card can be taken! - 30
+root - DEBUG - findMinValueCard(self): of cards in hand: ['Td | 10 | 2', 'Js | 12 | 1', '3c | 3 | 0', 'Dc | 13 | 1'] ... => minValueCard: 3c | 3 | 0 - 96
+root - DEBUG - pickCard(self): theBestCard: 3c | 3 | 0 - 33
+root - DEBUG - CardSet.removeCard(self,card): 3c | 3 | 0 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: 3c, with the available talon:['As'] are: [] - 355
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
+root - DEBUG - CardSet __init__
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 1Number of cards is : 1
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - isCardInSet, set: As;	 card: 3c returns false - 166
+root - WARNING - isCardInSet, set: As;	 card: None returns false - tried to check for card of type None - 160
+root - DEBUG - Card object created name = Ac, value = 1, points = 1 - 17
+root - DEBUG - CardSet.removeCard(self,card): Ac | 1 | 1 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Ac, with the available talon:['As', '3c'] are: [[1], [1]] - 355
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+As	3c	
+1	3	
+1	0	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 1Number of cards is : 1
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+As	3c	
+1	3	
+1	0	
+total points: 1 - 81
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
+root - DEBUG - play(self,card): candidate: As | 1 | 1 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['As | 1 | 1'] - 395
+root - DEBUG - CardSet.removeCard(self,card): As | 1 | 1 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+As	3c	
+1	3	
+1	0	
+total points: 1 - 81
+root - DEBUG - Card object created name = As, value = 1, points = 1 - 17
+root - DEBUG - play(self,card): candidate: As | 1 | 1 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['As | 1 | 1'] - 395
+root - DEBUG - CardSet.removeCard(self,card): As | 1 | 1 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - CardSet.sameAs(self,other): - 131
+root - DEBUG - ...self: 	 As - 132
+root - DEBUG - ...other:	 As - 133
+root - DEBUG - isCardInSet, set: As;	 card: As returns true - 164
+root - DEBUG - isCardInSet, set: As;	 card: As returns true - 164
+root - DEBUG - ...CardSet.sameAs(self,other) returns: True - 148
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: ['As\t\n1\t\n1\t\ntotal points: 1'] - 438
+root - DEBUG - CardSet __init__
+As	
+1	
+1	
+total points: 1 - 81
+root - DEBUG - evaluate_card(cardCombinations): bestSet: As	
+1	
+1	
+total points: 1 - 454
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 455
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 461
+root - DEBUG - CardSet.removeCard(self,card): As | 1 | 1 Card removed! - 227
+root - DEBUG - CardSet __init__
+None	
+-1	
+-1	
+total points: -1 - 81
+root - WARNING - CardSet init - set with card(s) of None type created! - 83
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Td, with the available talon:['3c'] are: [] - 355
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Js, with the available talon:['3c'] are: [] - 355
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Dc, with the available talon:['3c'] are: [] - 355
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - pickCard(self): theBestSet is CardSet(None) - No card can be taken! - 30
+root - DEBUG - findMinValueCard(self): of cards in hand: ['Td | 10 | 2', 'Js | 12 | 1', 'Dc | 13 | 1'] ... => minValueCard: Td | 10 | 2 - 96
+root - DEBUG - pickCard(self): theBestCard: Td | 10 | 2 - 33
+root - DEBUG - CardSet.removeCard(self,card): Td | 10 | 2 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Td, with the available talon:['3c'] are: [] - 355
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - CardSet __init__
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - isCardInSet, set: 3c;	 card: Td returns false - 166
+root - WARNING - isCardInSet, set: 3c;	 card: None returns false - tried to check for card of type None - 160
+root - DEBUG - Card object created name = 7h, value = 7, points = 0 - 17
+root - DEBUG - CardSet.removeCard(self,card): 7h | 7 | 0 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: 7h, with the available talon:['3c', 'Td'] are: [] - 355
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - Card object created name = Td, value = 10, points = 2 - 17
+root - DEBUG - CardSet __init__
+3c	Td	
+3	10	
+0	2	
+total points: 2 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 10Number of cards is : 1
+Td	
+10	
+2	
+total points: 2 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - isCardInSet, set: 3c Td;	 card: 7h returns false - 166
+root - WARNING - isCardInSet, set: 3c Td;	 card: None returns false - tried to check for card of type None - 160
+root - DEBUG - CardSet __init__
+None	
+-1	
+-1	
+total points: -1 - 81
+root - WARNING - CardSet init - set with card(s) of None type created! - 83
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Js, with the available talon:['3c', 'Td', '7h'] are: [] - 355
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - Card object created name = Td, value = 10, points = 2 - 17
+root - DEBUG - Card object created name = 7h, value = 7, points = 0 - 17
+root - DEBUG - CardSet __init__
+3c	Td	7h	
+3	10	7	
+0	2	0	
+total points: 2 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 10Number of cards is : 1
+Td	
+10	
+2	
+total points: 2 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 7Number of cards is : 1
+7h	
+7	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Dc, with the available talon:['3c', 'Td', '7h'] are: [[3, 10]] - 355
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - Card object created name = Td, value = 10, points = 2 - 17
+root - DEBUG - Card object created name = 7h, value = 7, points = 0 - 17
+root - DEBUG - CardSet __init__
+3c	Td	7h	
+3	10	7	
+0	2	0	
+total points: 2 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 10Number of cards is : 1
+Td	
+10	
+2	
+total points: 2 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 7Number of cards is : 1
+7h	
+7	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - Card object created name = Td, value = 10, points = 2 - 17
+root - DEBUG - Card object created name = 7h, value = 7, points = 0 - 17
+root - DEBUG - CardSet __init__
+3c	Td	7h	
+3	10	7	
+0	2	0	
+total points: 2 - 81
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 3c | 3 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['3c | 3 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 3c | 3 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = Td, value = 10, points = 2 - 17
+root - DEBUG - play(self,card): candidate: Td | 10 | 2 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['3c | 3 | 0', 'Td | 10 | 2'] - 395
+root - DEBUG - CardSet.removeCard(self,card): Td | 10 | 2 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+3c	Td	
+3	10	
+0	2	
+total points: 2 - 81
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: ['3c\tTd\t\n3\t10\t\n0\t2\t\ntotal points: 2'] - 438
+root - DEBUG - CardSet __init__
+3c	Td	
+3	10	
+0	2	
+total points: 2 - 81
+root - DEBUG - evaluate_card(cardCombinations): bestSet: 3c	Td	
+3	10	
+0	2	
+total points: 2 - 454
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 455
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 461
+root - DEBUG - pickCard(self): if bestSet is not None and bestSet.totalPoints > theBestSet.totalPoints: ['3c | 3 | 0', 'Td | 10 | 2'] 
+The best card: Dc | 13 | 1 - 20
+root - DEBUG - pickCard(self): theBestCard: Dc | 13 | 1 - 33
+root - DEBUG - CardSet.removeCard(self,card): Dc | 13 | 1 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Dc, with the available talon:['3c', 'Td', '7h'] are: [[3, 10]] - 355
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - Card object created name = Td, value = 10, points = 2 - 17
+root - DEBUG - Card object created name = 7h, value = 7, points = 0 - 17
+root - DEBUG - CardSet __init__
+3c	Td	7h	
+3	10	7	
+0	2	0	
+total points: 2 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 10Number of cards is : 1
+Td	
+10	
+2	
+total points: 2 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 3Number of cards is : 1
+3c	
+3	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 7Number of cards is : 1
+7h	
+7	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - Card object created name = Td, value = 10, points = 2 - 17
+root - DEBUG - Card object created name = 7h, value = 7, points = 0 - 17
+root - DEBUG - CardSet __init__
+3c	Td	7h	
+3	10	7	
+0	2	0	
+total points: 2 - 81
+root - DEBUG - Card object created name = 3c, value = 3, points = 0 - 17
+root - DEBUG - play(self,card): candidate: 3c | 3 | 0 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['3c | 3 | 0'] - 395
+root - DEBUG - CardSet.removeCard(self,card): 3c | 3 | 0 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - Card object created name = Td, value = 10, points = 2 - 17
+root - DEBUG - play(self,card): candidate: Td | 10 | 2 - 391
+root - DEBUG - getCardCombinations(cardPlayed): pendingCombination.append(candidate) - pendingCombination: ['3c | 3 | 0', 'Td | 10 | 2'] - 395
+root - DEBUG - CardSet.removeCard(self,card): Td | 10 | 2 Card removed! - 227
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - CardSet __init__
+3c	Td	
+3	10	
+0	2	
+total points: 2 - 81
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: ['3c\tTd\t\n3\t10\t\n0\t2\t\ntotal points: 2'] - 438
+root - DEBUG - CardSet __init__
+3c	Td	
+3	10	
+0	2	
+total points: 2 - 81
+root - DEBUG - evaluate_card(cardCombinations): bestSet: 3c	Td	
+3	10	
+0	2	
+total points: 2 - 454
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 455
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: True - 461
+root - DEBUG - CardSet.removeCard(self,card): 3c | 3 | 0 Card removed! - 227
+root - DEBUG - CardSet.removeCard(self,card): Td | 10 | 2 Card removed! - 227
+root - DEBUG - Card object created name = 2h, value = 2, points = 0 - 17
+root - DEBUG - CardSet.removeCard(self,card): 2h | 2 | 0 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: 2h, with the available talon:['7h'] are: [] - 355
+root - DEBUG - Card object created name = 7h, value = 7, points = 0 - 17
+root - DEBUG - CardSet __init__
+7h	
+7	
+0	
+total points: 0 - 81
+root - DEBUG - CardSet __init__
+Veliko masno debelo!Same card set of cards with value: 7Number of cards is : 1
+7h	
+7	
+0	
+total points: 0 - 81
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - isCardInSet, set: 7h;	 card: 2h returns false - 166
+root - WARNING - isCardInSet, set: 7h;	 card: None returns false - tried to check for card of type None - 160
+root - DEBUG - CardSet __init__
+None	
+-1	
+-1	
+total points: -1 - 81
+root - WARNING - CardSet init - set with card(s) of None type created! - 83
+root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Js, with the available talon:['7h', '2h'] are: [] - 355
+root - DEBUG - Card object created name = 7h, value = 7, points = 0 - 17
+root - DEBUG - Card object created name = 2h, value = 2, points = 0 - 17
+root - DEBUG - CardSet __init__
+7h	2h	
+7	2	
+0	0	
+total points: 0 - 81
 root - DEBUG - CardSet __init__
 Veliko masno debelo!Same card set of cards with value: 2Number of cards is : 1
 2h	
@@ -67,160 +1525,44 @@ Veliko masno debelo!Same card set of cards with value: 2Number of cards is : 1
 0	
 total points: 0 - 81
 root - DEBUG - CardSet __init__
-Veliko masno debelo!Same card set of cards with value: 6Number of cards is : 1
-6c	
-6	
+Veliko masno debelo!Same card set of cards with value: 7Number of cards is : 1
+7h	
+7	
 0	
 total points: 0 - 81
 root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
-root - DEBUG - Card object created name = 8s, value = 8, points = 0 - 17
-root - DEBUG - Card object created name = Tc, value = 10, points = 1 - 17
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - pickCard(self): theBestSet is CardSet(None) - No card can be taken! - 30
+root - DEBUG - findMinValueCard(self): of cards in hand: ['Js | 12 | 1'] ... => minValueCard: Js | 12 | 1 - 96
+root - DEBUG - pickCard(self): theBestCard: Js | 12 | 1 - 33
+root - DEBUG - CardSet.removeCard(self,card): Js | 12 | 1 Card removed! - 227
+root - DEBUG - getCardCombinations: CardValueCombinations for the thrown card: Js, with the available talon:['7h', '2h'] are: [] - 355
+root - DEBUG - Card object created name = 7h, value = 7, points = 0 - 17
 root - DEBUG - Card object created name = 2h, value = 2, points = 0 - 17
-root - DEBUG - Card object created name = 6c, value = 6, points = 0 - 17
 root - DEBUG - CardSet __init__
-8s	Tc	2h	6c	
-8	10	2	6	
-0	1	0	0	
-total points: 1 - 81
-root - DEBUG - Card object created name = Tc, value = 10, points = 1 - 17
-root - DEBUG - play(self,card): candidate: Tc | 10 | 1 - 373
-root - DEBUG - play(self,card): pendingCombination.append(candidate) - pendingCombination: ['Tc | 10 | 1'] - 377
-root - DEBUG - CardSet.removeCard(self,card): Tc | 10 | 1 Card removed! - 203
-root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
-root - DEBUG - CardSet __init__
-Tc	
-10	
-1	
-total points: 1 - 81
-root - DEBUG - Card object created name = 8s, value = 8, points = 0 - 17
-root - DEBUG - Card object created name = Tc, value = 10, points = 1 - 17
-root - DEBUG - Card object created name = 2h, value = 2, points = 0 - 17
-root - DEBUG - Card object created name = 6c, value = 6, points = 0 - 17
-root - DEBUG - CardSet __init__
-8s	Tc	2h	6c	
-8	10	2	6	
-0	1	0	0	
-total points: 1 - 81
-root - DEBUG - Card object created name = 8s, value = 8, points = 0 - 17
-root - DEBUG - play(self,card): candidate: 8s | 8 | 0 - 373
-root - DEBUG - play(self,card): pendingCombination.append(candidate) - pendingCombination: ['8s | 8 | 0'] - 377
-root - DEBUG - CardSet.removeCard(self,card): 8s | 8 | 0 Card removed! - 203
-root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
-root - DEBUG - Card object created name = 2h, value = 2, points = 0 - 17
-root - DEBUG - play(self,card): candidate: 2h | 2 | 0 - 373
-root - DEBUG - play(self,card): pendingCombination.append(candidate) - pendingCombination: ['8s | 8 | 0', '2h | 2 | 0'] - 377
-root - DEBUG - CardSet.removeCard(self,card): 2h | 2 | 0 Card removed! - 203
-root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
-root - DEBUG - CardSet __init__
-8s	2h	
-8	2	
+7h	2h	
+7	2	
 0	0	
 total points: 0 - 81
-root - DEBUG - CardSet.sameAs(self,other): - 109
-root - DEBUG - ...self: 	 Tc - 110
-root - DEBUG - ...other:	 8s 2h - 111
-root - DEBUG - ...if different len(names) returns false - 116
-root - DEBUG - hasOverlap, set1: Tc;	 set2: 8s 2h returns false - 163
-root - DEBUG - hasOverlap, set1: Tc;	 set2: 8s 2h returns false - 163
-root - DEBUG - isCardInSet, set: Tc;	 card: 8s returns false - 144
-root - WARNING - isCardInSet, set: Tc;	 card: None returns false - tried to check for card of type None - 138
-root - DEBUG - isCardInSet, set: Tc 8s;	 card: 2h returns false - 144
-root - WARNING - isCardInSet, set: Tc 8s;	 card: None returns false - tried to check for card of type None - 138
-root - DEBUG - addSet(self,other): to existing set: Tc	8s	2h	
-10	8	2	
-1	0	0	
-total points: 1 added the set: 8s	2h	
-8	2	
-0	0	
-total points: 0 - 241
 root - DEBUG - CardSet __init__
-Tc	8s	2h	
-10	8	2	
-1	0	0	
-total points: 1 - 81
-root - DEBUG - CardSet.removeCard(self,card): Tc | 10 | 1 Card removed! - 203
-root - DEBUG - CardSet.removeCard(self,card): 8s | 8 | 0 Card removed! - 203
-root - DEBUG - CardSet.removeCard(self,card): 2h | 2 | 0 Card removed! - 203
-root - DEBUG - Card object created name = Ac, value = 1, points = 1 - 17
-root - DEBUG - CardSet.removeCard(self,card): Ac | 1 | 1 Card removed! - 203
-root - DEBUG - CardValueCombinations for the thrown card: Ac, with the available talon:['6c'] are: [] - 337
-root - DEBUG - Card object created name = 6c, value = 6, points = 0 - 17
-root - DEBUG - CardSet __init__
-6c	
-6	
+Veliko masno debelo!Same card set of cards with value: 2Number of cards is : 1
+2h	
+2	
 0	
 total points: 0 - 81
 root - DEBUG - CardSet __init__
-Veliko masno debelo!Same card set of cards with value: 6Number of cards is : 1
-6c	
-6	
+Veliko masno debelo!Same card set of cards with value: 7Number of cards is : 1
+7h	
+7	
 0	
 total points: 0 - 81
 root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
-root - DEBUG - play(self,card) - takenACard = False - 434
-root - DEBUG - isCardInSet, set: 6c;	 card: Ac returns false - 144
-root - WARNING - isCardInSet, set: 6c;	 card: None returns false - tried to check for card of type None - 138
-root - DEBUG - Card object created name = 7d, value = 7, points = 0 - 17
-root - DEBUG - CardSet.removeCard(self,card): 7d | 7 | 0 Card removed! - 203
-root - DEBUG - CardValueCombinations for the thrown card: 7d, with the available talon:['6c', 'Ac'] are: [[6, 1]] - 337
-root - DEBUG - Card object created name = 6c, value = 6, points = 0 - 17
-root - DEBUG - Card object created name = Ac, value = 1, points = 1 - 17
-root - DEBUG - CardSet __init__
-6c	Ac	
-6	1	
-0	1	
-total points: 1 - 81
-root - DEBUG - CardSet __init__
-Veliko masno debelo!Same card set of cards with value: 1Number of cards is : 1
-Ac	
-1	
-1	
-total points: 1 - 81
-root - DEBUG - CardSet __init__
-Veliko masno debelo!Same card set of cards with value: 6Number of cards is : 1
-6c	
-6	
-0	
-total points: 0 - 81
-root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
-root - DEBUG - Card object created name = 6c, value = 6, points = 0 - 17
-root - DEBUG - Card object created name = Ac, value = 1, points = 1 - 17
-root - DEBUG - CardSet __init__
-6c	Ac	
-6	1	
-0	1	
-total points: 1 - 81
-root - DEBUG - Card object created name = 6c, value = 6, points = 0 - 17
-root - DEBUG - play(self,card): candidate: 6c | 6 | 0 - 373
-root - DEBUG - play(self,card): pendingCombination.append(candidate) - pendingCombination: ['6c | 6 | 0'] - 377
-root - DEBUG - CardSet.removeCard(self,card): 6c | 6 | 0 Card removed! - 203
-root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
-root - DEBUG - Card object created name = Ac, value = 1, points = 1 - 17
-root - DEBUG - play(self,card): candidate: Ac | 1 | 1 - 373
-root - DEBUG - play(self,card): pendingCombination.append(candidate) - pendingCombination: ['6c | 6 | 0', 'Ac | 1 | 1'] - 377
-root - DEBUG - CardSet.removeCard(self,card): Ac | 1 | 1 Card removed! - 203
-root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
-root - DEBUG - CardSet __init__
-6c	Ac	
-6	1	
-0	1	
-total points: 1 - 81
-root - DEBUG - CardSet __init__
-6c	Ac	
-6	1	
-0	1	
-total points: 1 - 81
-root - DEBUG - CardSet.removeCard(self,card): 6c | 6 | 0 Card removed! - 203
-root - DEBUG - CardSet.removeCard(self,card): Ac | 1 | 1 Card removed! - 203
-root - DEBUG - Card object created name = 3h, value = 3, points = 0 - 17
-root - DEBUG - CardSet.removeCard(self,card): 3h | 3 | 0 Card removed! - 203
-root - DEBUG - CardValueCombinations for the thrown card: 3h, with the available talon:[] are: [] - 337
-root - DEBUG - CardSet __init__
-
-
-
-total points: 0 - 81
-root - DEBUG - Card object created name = None, value = -1, points = -1 - 17
-root - DEBUG - play(self,card) - takenACard = False - 434
-root - DEBUG - isCardInSet, set: ;	 card: 3h returns false - 144
-root - WARNING - isCardInSet, set: ;	 card: None returns false - tried to check for card of type None - 138
+root - DEBUG - getCardCombinations(cardPlayed): final cardCombinations: [] - 438
+root - DEBUG - evaluate_card(cardCombinations): takenACard = False - 457
+root - DEBUG - evaluate_card(cardCombinations): bestSet: None - 460
+root - DEBUG - evaluate_card(cardCombinations): takenAcard: False - 461
+root - DEBUG - isCardInSet, set: 7h 2h;	 card: Js returns false - 166
+root - WARNING - isCardInSet, set: 7h 2h;	 card: None returns false - tried to check for card of type None - 160
