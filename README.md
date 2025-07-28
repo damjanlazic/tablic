@@ -2,7 +2,7 @@ To play the game or inspect the final version of the code go to folder productio
 
 aboutTheGame.txt - Included here for convenience:
 
-This is the first version of tablanet or tablich game made in rudimentary python without any GUI
+This is the first version of tablanet or tablich game made in rudimentary python without any GUI.
 It was at first meant as a simple excersize too improve my python skills, but as I tried to make it 
 into a real game that one could play it turned out more complex. As I worked on it in my free time which 
 was sometimes scarce, the project took me a long time to bring to the point where I have the rudimentary 
