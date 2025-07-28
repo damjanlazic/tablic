@@ -1,0 +1,126 @@
+This is the first version of tablanet or tablich game made in rudimentary python without any GUI
+It was at first meant as a simple excersize too improve my python skills, but as I tried to make it 
+into a real game that one could play it turned out more complex. As I worked on it in my free time which 
+was sometimes scarce, the project took me a long time to bring to the point where I have the rudimentary 
+first version. If you are python enthusiast or tablich enthusiast, I encourage you to play and dive into 
+the code which is all made public here.
+
+- HOW TO SET UP 
+
+You need all the python files from the "production" folder,
+copy them to a single folder on a machine where you have python installed
+and then run the command (linux terminal):
+
+python3 playAgainstComputer.py
+
+(if you have earlier versions of python it should work too with python playAgainstComputer.py)
+
+- HOW TO PLAY THE GAME  
+(It is actually quite straightforward so most people can probably read the next paragraph and figure out
+everything else while playing, but I included a detailed explanation as well for those who like to familiarize 
+themselves better with the game beforehand )
+
+As is mentioned, there is no GUI (for now) so the game is played by typing the names of the cards 
+as they appear on the screen. Names are all two character strings with the first character being a 
+number 2-9 or A (ace), T (ten), J (jack), D (dame) or K (king), while the second character represents
+the suite so it can be c (clubs), s (spades), d (diamonds), h (harts)
+For example jack of diamonds is "Jd" while 5 of clubs is "5c"
+At the moment it is case sensitive, but if you mistype the name of the card, it will just prompt you to type it again.
+
+
+For every set of cards, that is displayed on the console, you see the cards like this:
+Talon:
+4s      3d      8d      9d
+4       3       8       9
+0       0       0       0
+total points: 0
+.................................
+
+So on the Talon (or table) shown above we have 4 cards: 4 of spades, 3 of diamonds, 8 of diamonds and 9 of diamonds
+the top row is the name, as you would enter if you had a card like that to throw (4s      3d      8d      9d)
+the second row is just the numeric value of the card as it is counted in the game: (4       3       8       9)
+and the third row is how many points the card is worth when taken in tablich       (0       0       0       0)
+and total points indicates the sum worth of all the points shown in the set displayed - in this case 0.
+
+Now I will show a different talon and how the card is played and counted:
+
+Talon:
+
+Jh      As
+12      1
+1       1
+total points: 2
+............................
+
+(so on the talon above you can see that we have two cards which are both worth 1 point, and total points is therefore 2,
+the numerical value of Ace is either 1 or 11 in tablich, however here we just display 1 for convenience, but rest assured it counts 
+as 11 as well when you play the game - as it should in real tablich)
+
+Next, we would see cards that the human player is holding currently, this is always displayed prior to throwing a next card:
+
+Player:  Perica 
+Cards in hand: 
+9h      Dh      Jc      7s      8h      Td
+9       13      12      7       8       10
+0       1       1       0       0       2
+total points: 4
+..........................................
+
+So here the last row (0       1       1       0       0       2) like before is showing the points for each card:
+9h is worth 0, Dh is worth 1 point, while the last card Td (ten of diamonds) is worth 2 points as it is in tablich.
+And of course total points are not the points of the player, but sum total of points in the card set displayed, and
+that is in this case, all the cards the player is holding "in his hand" at the moment. (0+1+1+0+0+2=4)
+
+Next, player is prompted to throw a card, and he chooses Dh (Dame of hearts):
+
+Pick a card to throw: Dh
+TABLA!
+
+player:  Perica 
+new cards taken:  3 
+new points collected:  4 
+ 
+total cards taken:  25 
+total points:  14 
+..........................
+
+So one good thing about this game is that you just have to type the card that you are throwing, 
+the alghoritm will automatically take the best possible combination from the cards available,
+and notify the player of how many new cards he has taken, how many new points collected (this is pertaining to the last move)
+and also total cards taken and total points which sum up all the cards and points the player has in his stash of taken cards.
+When player takes all the cards from the Talon (table) as shown above, message "TABLA!" is displayed and one additional point is counted towards
+players collected points immediately so the new points collected and total points contain the TABLA points.
+
+Next, the player can see what computer played and how much points it collected:
+
+Talon:
+
+
+
+
+total points: 0
+............................
+
+Computer played: 3s | 3 | 0
+
+player:  Computer 
+new cards taken:  0 
+new points collected:  0 
+ 
+total cards taken:  16 
+total points:  5 
+..........................
+Talon:
+
+3s
+3
+0
+total points: 0
+............................
+
+So talon was empty after Perica the human player threw a dame and took jack and ace, then computer threw 3s which stays on Talon and we can see that 
+Computer didn't collect any new points or cards, and that he has so far taken 16 cards, and has collected 5 points from the start of the game.
+
+If you want to quit the game without finishing, for now Ctrl+c is the only option.
+
+Enjoy!
